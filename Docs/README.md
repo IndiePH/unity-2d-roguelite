@@ -15,6 +15,7 @@ It lives in the **game repository** so collaborators who clone this repo get the
 | [PROJECT_CONTEXT.md](PROJECT_CONTEXT.md) | Mother doc: current focus; keep tiny |
 | [FEATURE_SPECS/](FEATURE_SPECS/) | Child docs: owned feature detail |
 | [DECISIONS/](DECISIONS/) | Child docs: accepted / proposed / superseded choices |
+| [REFERENCES/brotato.md](REFERENCES/brotato.md) | Brotato study. Not a feature spec and not a decision. |
 | [CHANGELOG.md](CHANGELOG.md) | Shipped player-facing changes only |
 
 Agent index and workflow instructions: [../AGENTS.md](../AGENTS.md).

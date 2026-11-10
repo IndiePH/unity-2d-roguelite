@@ -3,7 +3,7 @@
 ## Status and date
 
 Status: early template. No gameplay design is settled.
-Date: 2026-11-10.
+Date: 2026-11-11.
 
 ## High concept
 
@@ -15,7 +15,7 @@ Not decided.
 
 ## MVP
 
-Current scenes are template-only (camera + Global Light 2D). See [PROJECT_CONTEXT.md](PROJECT_CONTEXT.md).
+Scene contents are in [PROJECT_CONTEXT.md](PROJECT_CONTEXT.md). Gameplay is not settled.
 
 Smallest missing piece that would make a session playable: Not decided.
 
@@ -23,6 +23,14 @@ Smallest missing piece that would make a session playable: Not decided.
 
 Not recorded.
 
+## Proposals
+
+Not accepted. The sections above are still not decided.
+
+- [0002-shared-arena-coop.md](DECISIONS/0002-shared-arena-coop.md) — up to 4 players, one arena, Brotato-style waves, per-player builds.
+- [0003-party-scaling.md](DECISIONS/0003-party-scaling.md) — enemy count and HP by party size. Not locked.
+- [brotato.md](REFERENCES/brotato.md) — Brotato study. Not a specification.
+
 ## Active children
 
-None yet. Feature specs and decisions will be linked here when they exist.
+- [character-sprite.md](FEATURE_SPECS/character-sprite.md) — in progress.

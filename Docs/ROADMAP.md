@@ -2,7 +2,7 @@
 
 ## 1. Baseline — in progress
 
-Editor compile and tests not recorded. Scene gaps: see [PROJECT_CONTEXT.md](PROJECT_CONTEXT.md).
+No test assembly. Sprite movement, dash, hit, and death: [character-sprite.md](FEATURE_SPECS/character-sprite.md). Next play check: [PROJECT_CONTEXT.md](PROJECT_CONTEXT.md).
 
 Exit: the next task is one sentence.
 

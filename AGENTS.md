@@ -14,8 +14,10 @@ Documentation for this title is kept in the game repo so collaborators share one
 | `Docs/TEST_STRATEGY.md` | Testing requirements and definition of done | When implementing or verifying features |
 | `Docs/FEATURE_SPECS/*.md` | Owned feature detail | When working on that feature |
 | `Docs/DECISIONS/*.md` | Architectural/design decisions | When making or checking related decisions |
+| `Docs/REFERENCES/brotato.md` | Brotato study. Not design authority. | When comparing an idea to that reference |
 | `Docs/CHANGELOG.md` | Shipped player-facing changes | When recording a release or verifying what shipped |
 | `.cursor/rules/unity-ugui.mdc` | uGUI Canvas standards | When authoring or editing uGUI |
+| `.cursor/rules/unity-serialized-references.mdc` | Inspector `[SerializeField]` references | Always |
 
 # Project Instructions
 

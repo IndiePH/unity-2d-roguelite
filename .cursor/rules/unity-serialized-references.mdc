@@ -1,0 +1,21 @@
+---
+description: Wire known components and assets in the Inspector with SerializeField. Do not rediscover them at runtime.
+alwaysApply: true
+---
+
+# Serialized references
+
+A component, prefab, or asset that already exists on the prefab or in the scene is assigned in the Inspector.
+
+Use `[SerializeField]` for that reference. Do not fill it in `Awake`, `OnEnable`, or `Start` with `GetComponent`, `GetComponentInChildren`, `GetComponentInParent`, `Find`, or `FindObjectOfType`.
+
+Runtime lookup is only for an object created during play that cannot be assigned ahead of time.
+
+```csharp
+public class CharacterMovement : MonoBehaviour
+{
+    [SerializeField] Character character;
+}
+```
+
+Assign `character` on the prefab. Do not add a null fallback that calls `GetComponent`.
