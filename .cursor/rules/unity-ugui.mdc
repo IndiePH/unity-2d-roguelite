@@ -1,0 +1,21 @@
+---
+description: uGUI Canvas standards. Static UI is authored as prefabs and scene hierarchy. C# uses serialized references and does not construct predefined screens.
+globs: **/UI/**/*.cs, **/*Presenter.cs, **/*View.cs, **/*Hud.cs
+alwaysApply: false
+---
+
+# Unity uGUI
+
+Applies when a task authors or edits a Canvas, a UI prefab, or a screen controller for uGUI.
+
+## Authored structure
+
+Predefined layout lives on prefabs and in the scene. C# holds serialized references to those prefabs and to the components it updates.
+
+Do not build a predefined screen in C# with `new GameObject()` or by recreating a known hierarchy in code.
+
+A list, inventory, or other repeated row is a prefab instantiated into a container that already exists on the screen.
+
+Known prefabs, sprites, and fonts are serialized references. Do not load them with `Resources.Load` or a hardcoded asset path.
+
+Do not add a UIDocument for a screen that this rule covers.
