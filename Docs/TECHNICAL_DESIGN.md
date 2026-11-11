@@ -1,6 +1,6 @@
 # Technical Design
 
-The run shape, the per-player view, party scaling, the weapon ring, and who may write gameplay state are settled. The high concept and the core loop are not. The player is the sprite in [character-sprite.md](FEATURE_SPECS/character-sprite.md).
+The run shape, the per-player view, party scaling, the weapon ring, the character roster, and who may write gameplay state are settled. The high concept and the core loop are not. The player in the scene is the sprite in [character-sprite.md](FEATURE_SPECS/character-sprite.md). The roster is accepted and not built: [0007-character-roster.md](DECISIONS/0007-character-roster.md).
 
 ## Settled facts
 
@@ -19,7 +19,7 @@ The run shape, the per-player view, party scaling, the weapon ring, and who may 
 - Character: `Assets/Scripts/Character.cs` on the sprite prefab. Invulnerability, movement hold, and death. `Hit` raises `CharacterHit`. `Die` raises `CharacterDeath`. No damage. There is no capsule prefab. Detail: [character-sprite.md](FEATURE_SPECS/character-sprite.md).
 - CharacterMovement: `Assets/Scripts/CharacterMovement.cs` on the sprite prefab. WASD sets `linearVelocity`. It still steps `transform.position` when no rigidbody is assigned. Both this and dash write velocity until the motor in [0005-simulation-authority.md](DECISIONS/0005-simulation-authority.md). Detail: [character-sprite.md](FEATURE_SPECS/character-sprite.md).
 - CharacterDash: `Assets/Scripts/CharacterDash.cs` on the sprite prefab. Left Shift velocity push, two stored uses. Detail: [character-sprite.md](FEATURE_SPECS/character-sprite.md).
-- CharacterSpriteAnimation: `Assets/Scripts/CharacterSpriteAnimation.cs` on the sprite prefab only. Frame lists, the P hit test, and the L death test. P calls `Character.Hit` after the hit clip starts. Detail: [character-sprite.md](FEATURE_SPECS/character-sprite.md).
+- CharacterSpriteAnimation: `Assets/Scripts/CharacterSpriteAnimation.cs` on the sprite prefab only. Frame lists, the P hit test, and the L death test. P calls `Character.Hit` after the hit clip starts. The lists stay on this component until the sheet asset in [0007-character-roster.md](DECISIONS/0007-character-roster.md). Detail: [character-sprite.md](FEATURE_SPECS/character-sprite.md).
 - CameraShake: `Assets/Scripts/CameraShake.cs` on the `MainCamera` prefab. Listens to `CharacterHit` and `CharacterDeath`. Hit and death profiles stay on this component. The `SampleScene` instance is named Main Camera. Detail: [character-sprite.md](FEATURE_SPECS/character-sprite.md).
 - EventChannel: `Assets/Scripts/EventChannel.cs`, with `CharacterHitChannel` and `CharacterDeathChannel`. Assets: `Assets/Settings/Events/`. Decision: [0004-event-channels.md](DECISIONS/0004-event-channels.md).
 - GameConfig: `Assets/Scripts/GameConfig.cs`. Asset: `Assets/Settings/GameConfig.asset`. Wave count only. The wave runner does not exist yet. Decision: [0002-shared-arena-coop.md](DECISIONS/0002-shared-arena-coop.md).
@@ -39,3 +39,4 @@ The run shape, the per-player view, party scaling, the weapon ring, and who may 
 - [0003-party-scaling.md](DECISIONS/0003-party-scaling.md) — accepted starting balance. Not a wave-difficulty curve.
 - [0005-simulation-authority.md](DECISIONS/0005-simulation-authority.md) — accepted. Single writer, spawner, host later.
 - [0006-hovering-weapons.md](DECISIONS/0006-hovering-weapons.md) — accepted. Ring, and a profile per weapon type.
+- [0007-character-roster.md](DECISIONS/0007-character-roster.md) — accepted. A chosen character is a style. The spritesheet is one asset of clips. Not built.

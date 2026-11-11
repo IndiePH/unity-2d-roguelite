@@ -13,6 +13,7 @@ The high concept and the core loop below are still not decided. These are accept
 - A run has `waveCount` waves, default 20, edited on `GameConfig`. The last wave is that number. Player-count scaling does not change with that total, and there is no per-wave difficulty formula yet.
 - Enemy count and health scale with the players actually in the match. Accepted starting table: [0003-party-scaling.md](DECISIONS/0003-party-scaling.md). Still open: enemies already alive when someone joins or leaves.
 - Equipped weapons hover on a ring and attack on their own. Each weapon has a profile. The type decides its stats and behavior. Accepted: [0006-hovering-weapons.md](DECISIONS/0006-hovering-weapons.md). Not built. Nothing applies damage yet.
+- A run has a roster of characters. A player chooses one, and that character brings their own style, including their own spritesheet. That sheet is one asset of clips. Selection and the asset are not built. `SampleScene` still has one character. Accepted: [0007-character-roster.md](DECISIONS/0007-character-roster.md). The Spell Brigade and [brotato.md](REFERENCES/brotato.md) are the reference shape, not the definition of a character.
 - The fight is a local simulation that alone writes gameplay state. Presentation listens. Across prefabs, the simulation raises an event channel after the fact is committed. Accepted: [0005-simulation-authority.md](DECISIONS/0005-simulation-authority.md), [0004-event-channels.md](DECISIONS/0004-event-channels.md). Netcode is not part of the baseline.
 
 ## High concept

@@ -23,3 +23,7 @@ Exit: the existing rule tests were run, and one played session matched them.
 ## 5. Breadth — not started
 
 Not started until gate 2 is done, and not started until gate 3 is done when the GDD requires a committed session to survive a restart.
+
+## Not a current gate
+
+Character roster and selection: [0007-character-roster.md](DECISIONS/0007-character-roster.md). Accepted. Not started.

@@ -91,7 +91,7 @@ Unlocks can ask for a weapon class, a stat or economy milestone, a boss approach
 
 Judge a character in the early, middle, and late run, and across more than one build. Early power with bad scaling, or a weak start that dominates later, are both failures if they are accidental.
 
-Still open: equal power versus intentional difficulty, whether every character can use every weapon and item, additive versus multiplicative versus rule-changing modifiers, whether a character mechanic can be upgraded mid-run, and how many characters a first release needs. The player is one spritesheet character. A roster is not started. See [character-sprite.md](../FEATURE_SPECS/character-sprite.md).
+Still open: equal power versus intentional difficulty, whether every character can use every weapon and item, additive versus multiplicative versus rule-changing modifiers, whether a character mechanic can be upgraded mid-run, and how many characters a first release needs. The player in the scene is one spritesheet character. The roster is accepted in [0007-character-roster.md](../DECISIONS/0007-character-roster.md) and not built. See [character-sprite.md](../FEATURE_SPECS/character-sprite.md).
 
 ## Weapons and loadout
 
@@ -244,7 +244,7 @@ Show a lock, its requirement, and progress. On unlock, say what arrived and wher
 
 The reference also mentions pause and resume, wave retry on some versions, accessibility and custom difficulty, stat tracking, a build summary, controller and keyboard, rebinding, save and resume, localization, and audio, visual, and gameplay settings. Platform and option names vary. Verify before treating any of them as requirements.
 
-Co-op is accepted in [0002-shared-arena-coop.md](../DECISIONS/0002-shared-arena-coop.md). Each player has a camera with their character at the center. That decision still leaves open: shared versus separate currency, revive, camera layout beyond that center, and whether two players can pick the same character.
+Co-op is accepted in [0002-shared-arena-coop.md](../DECISIONS/0002-shared-arena-coop.md). Each player has a camera with their character at the center. That decision still leaves open: shared versus separate currency, revive, and camera layout beyond that center. Character selection is [0007-character-roster.md](../DECISIONS/0007-character-roster.md). Whether two players can pick the same character stays open there.
 
 Accessibility to consider later: game speed, less shake and flashing, colorblind indicators, readable and scalable text, aim assist, remapping, audio cues that also have a visual, and less clutter.
 

@@ -8,7 +8,7 @@ Unity 6 (`6000.6.8f1`) URP 2D template named `unity-2d-roguelite`. The high conc
 
 ## Current gate
 
-Baseline — in progress. No project test assembly. The player is `CharacterSprite`, the only character prefab and the only character in `SampleScene`. The sprite moves by rigidbody velocity. `Grid` is `Ground` and `GroundTop`, with no collider. Detail: [character-sprite.md](FEATURE_SPECS/character-sprite.md).
+Baseline — in progress. No project test assembly. The player is `CharacterSprite`, the only character prefab and the only character in `SampleScene`. A roster with character selection is accepted and not built: [0007-character-roster.md](DECISIONS/0007-character-roster.md). The sprite moves by rigidbody velocity. `Grid` is `Ground` and `GroundTop`, with no collider. Detail: [character-sprite.md](FEATURE_SPECS/character-sprite.md).
 
 ## Next step
 
