@@ -1,18 +1,18 @@
 # Project Context
 
-Date: 2026-11-10.
+Date: 2026-11-11.
 
 ## What the project is
 
-Unity 6 (`6000.6.8f1`) URP 2D template named `unity-2d-roguelite`. Gameplay design is not settled.
+Unity 6 (`6000.6.8f1`) URP 2D template named `unity-2d-roguelite`. The high concept is not settled. The run shape is [0002-shared-arena-coop.md](DECISIONS/0002-shared-arena-coop.md).
 
 ## Current gate
 
-Baseline — in progress. Editor compile not verified in docs. No project test assembly. Build scene `Assets/Scenes/SampleScene.unity` has Main Camera + Global Light 2D only.
+Baseline — in progress. EditMode covers spawn-point choice, the two hit-point profiles, and the spawner pool. The player is `CharacterSprite`, the only character prefab. `SampleScene` spawns one of it on a random open point under `SpawnPoints`. A roster of characters with different talents and playstyles has two profiles, 100 HP and 70 HP. The prefab uses 100 HP. Selection is not built: [0007-character-roster.md](DECISIONS/0007-character-roster.md). The sprite moves by rigidbody velocity. The arena is the `Tilemap`. `CameraBounds` is 33 by 21, offset (0.5, 0.5), centered on cell (0, 0). `CameraFollow` keeps the character centered until the view would leave that box, and the feet stop on the barrier around it. The scene top of that barrier sits half a tile below the box. A `Hurt` trigger on the sprite covers the head and meets no layer yet. Detail: [character-sprite.md](FEATURE_SPECS/character-sprite.md), [character-profile.md](FEATURE_SPECS/character-profile.md), [character-spawn.md](FEATURE_SPECS/character-spawn.md), [spawner-pool.md](FEATURE_SPECS/spawner-pool.md), [camera-follow.md](FEATURE_SPECS/camera-follow.md).
 
 ## Next step
 
-Open the project in the Unity Editor, confirm it compiles, and write the next task as one sentence.
+Walk into an edge of `CameraBounds`, including the top, where the barrier sits half a tile below the box. The character now starts on a spawn point. It stays centered until the view meets the box, then the camera stops and the feet stop. That walk is unplayed. The earlier push test used the previous box. The P hit and L death play check are still unplayed. Play Mode did spawn one character on an open point. The Game view was not watched.
 
 ## Task board
 
@@ -26,5 +26,8 @@ Lists: `To-Do` → `In-Progress` → `Done`, plus `References` for inspirations.
 | [README.md](README.md) | Collab rules, authority order, read path |
 | [ROADMAP.md](ROADMAP.md) | Gates |
 | [GDD.md](GDD.md) | Design status |
+| [REFERENCES/brotato.md](REFERENCES/brotato.md) | Brotato study. Not design authority. |
 | [TECHNICAL_DESIGN.md](TECHNICAL_DESIGN.md) | Settled platform facts |
+| [DECISIONS/0005-simulation-authority.md](DECISIONS/0005-simulation-authority.md) | Who may write gameplay state |
+| [DECISIONS/0004-event-channels.md](DECISIONS/0004-event-channels.md) | How another prefab hears a committed fact |
 | [../AGENTS.md](../AGENTS.md) | Agent index |

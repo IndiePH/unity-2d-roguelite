@@ -2,7 +2,7 @@
 
 ## 1. Baseline — in progress
 
-Editor compile and tests not recorded. Scene gaps: see [PROJECT_CONTEXT.md](PROJECT_CONTEXT.md).
+EditMode covers spawn-point choice, the two hit-point profiles, and the spawner pool: [spawner-pool.md](FEATURE_SPECS/spawner-pool.md). Sprite movement, dash, hit, and death: [character-sprite.md](FEATURE_SPECS/character-sprite.md). Character spawn: [character-spawn.md](FEATURE_SPECS/character-spawn.md). Profiles: [character-profile.md](FEATURE_SPECS/character-profile.md). Camera follow: [camera-follow.md](FEATURE_SPECS/camera-follow.md). Next play check: [PROJECT_CONTEXT.md](PROJECT_CONTEXT.md).
 
 Exit: the next task is one sentence.
 
@@ -23,3 +23,7 @@ Exit: the existing rule tests were run, and one played session matched them.
 ## 5. Breadth — not started
 
 Not started until gate 2 is done, and not started until gate 3 is done when the GDD requires a committed session to survive a restart.
+
+## Not a current gate
+
+Character selection is accepted and not started. The 100 HP and 70 HP profiles exist: [0007-character-roster.md](DECISIONS/0007-character-roster.md), [character-profile.md](FEATURE_SPECS/character-profile.md).

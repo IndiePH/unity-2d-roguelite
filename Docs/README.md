@@ -15,6 +15,7 @@ It lives in the **game repository** so collaborators who clone this repo get the
 | [PROJECT_CONTEXT.md](PROJECT_CONTEXT.md) | Mother doc: current focus; keep tiny |
 | [FEATURE_SPECS/](FEATURE_SPECS/) | Child docs: owned feature detail |
 | [DECISIONS/](DECISIONS/) | Child docs: accepted / proposed / superseded choices |
+| [REFERENCES/brotato.md](REFERENCES/brotato.md) | Brotato study. Not a feature spec and not a decision. |
 | [CHANGELOG.md](CHANGELOG.md) | Shipped player-facing changes only |
 
 Agent index and workflow instructions: [../AGENTS.md](../AGENTS.md).
@@ -46,12 +47,12 @@ Do **not** move files between todo / in-progress / done folders. Keep the path s
 Required at top of each `FEATURE_SPECS/*.md` (except this README):
 
 ```markdown
-Status: proposed | in-progress | done | superseded
+Status: proposed | accepted | in-progress | done | superseded
 Owner: name
 Last updated: YYYY-MM-DD
 ```
 
-No status → treat as draft, not authority.
+No status → treat as draft, not authority. `accepted` on a spec means the design is locked. Implementation may not have started.
 
 Create a feature spec when work starts or a design choice would change implementation. Do not pre-create empty specs for every future idea. Unowned ideas stay as ROADMAP bullets until someone owns a spec.
 
