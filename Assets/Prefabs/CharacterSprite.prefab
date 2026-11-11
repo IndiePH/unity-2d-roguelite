@@ -110,6 +110,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5010cc6ecd1a8dd44853e9b1db6e75d3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Character
+  characterHit: {fileID: 11400000, guid: 54c4436aaf98f294eb76cd9c9bf6ad87, type: 2}
+  characterDeath: {fileID: 11400000, guid: 88e28a1e90f895545bc0cbbc0be5c946, type: 2}
 --- !u!114 &8939641012020373390
 MonoBehaviour:
   m_ObjectHideFlags: 0

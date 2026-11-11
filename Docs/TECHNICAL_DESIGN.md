@@ -33,7 +33,7 @@ The run shape, the per-player view, party scaling, the weapon ring, and who may 
 
 - [0001-serialized-references.md](DECISIONS/0001-serialized-references.md) — accepted. Inspector references for known components and assets.
 - [0004-event-channels.md](DECISIONS/0004-event-channels.md) — accepted. One asset per fact. Listeners share it. Same-prefab reads stay on the owner.
-- [character-sprite.md](FEATURE_SPECS/character-sprite.md) — in progress. Sprite movement, dash, hit test, death test, and the tilemap collider.
+- [character-sprite.md](FEATURE_SPECS/character-sprite.md) — in progress. Sprite movement, dash, hit test, and death test. The scene grid does not block movement.
 - [hovering-weapons.md](FEATURE_SPECS/hovering-weapons.md) — accepted design, not built. Detail for [0006-hovering-weapons.md](DECISIONS/0006-hovering-weapons.md).
 - [0002-shared-arena-coop.md](DECISIONS/0002-shared-arena-coop.md) — accepted mode. Per-player camera, character centered. Wave count is config, default 20.
 - [0003-party-scaling.md](DECISIONS/0003-party-scaling.md) — accepted starting balance. Not a wave-difficulty curve.

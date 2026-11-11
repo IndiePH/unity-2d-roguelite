@@ -14,7 +14,7 @@ The ring is how the loadout is carried, which is the Brotato approach named here
 
 ## Hover
 
-Weapons follow the player's position. They are not rigidbodies, and they do not collide with the player or with `Grid/Mid`.
+Weapons follow the player's position. They are not rigidbodies, and they do not collide with the player or with arena tiles. `SampleScene` has no blocking tilemap.
 
 They are spaced evenly on a circle in the player's local space. One weapon starts at a fixed angle. A second sits opposite it. Further weapons split the circle by the same step. The circle turns continuously, so the weapons travel around the body and keep that spacing.
 

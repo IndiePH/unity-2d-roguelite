@@ -2,11 +2,23 @@ using UnityEngine;
 
 public class Character : MonoBehaviour
 {
+    [SerializeField] CharacterHitChannel characterHit;
+    [SerializeField] CharacterDeathChannel characterDeath;
+
     float invulnerableUntil;
 
     public bool IsInvulnerable => Time.time < invulnerableUntil;
     public bool HoldMovement { get; private set; }
     public bool IsDead { get; private set; }
+
+    void OnEnable()
+    {
+        if (characterHit == null)
+            throw new MissingReferenceException($"{name} needs a CharacterHit channel assigned.");
+
+        if (characterDeath == null)
+            throw new MissingReferenceException($"{name} needs a CharacterDeath channel assigned.");
+    }
 
     public void SetHoldMovement(bool hold)
     {
@@ -16,6 +28,14 @@ public class Character : MonoBehaviour
         HoldMovement = hold;
     }
 
+    public void Hit()
+    {
+        if (IsDead)
+            return;
+
+        characterHit.Raise(this);
+    }
+
     public void Die()
     {
         if (IsDead)
@@ -23,6 +43,7 @@ public class Character : MonoBehaviour
 
         IsDead = true;
         HoldMovement = true;
+        characterDeath.Raise(this);
     }
 
     public void StartInvulnerability(float duration)

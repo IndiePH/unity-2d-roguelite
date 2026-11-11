@@ -192,6 +192,8 @@ public class CharacterSpriteAnimation : MonoBehaviour
 
         if (hit[0] != null)
             spriteRenderer.sprite = hit[0];
+
+        character.Hit();
     }
 
     void UpdateBlink()
