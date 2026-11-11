@@ -4,7 +4,7 @@ Last updated: 2026-11-11
 
 # Character roster
 
-A run has a roster of characters. A player chooses one, and that character is the style they bring: how they play, and their own spritesheet.
+A run has multiple characters to choose from. Each character has different talents and a different playstyle, and their own spritesheet. A player chooses one.
 
 The reference shape is The Spell Brigade (https://store.steampowered.com/app/2904000/The_Spell_Brigade/) and the Brotato study. The study is not this decision: [brotato.md](../REFERENCES/brotato.md).
 
@@ -12,13 +12,13 @@ The current body is still one prefab. `CharacterSprite` is the only character in
 
 ## Choice
 
-The game has more than one character. Choosing one is part of starting a run. The choice is a style, not a new drawing of the same style. The spritesheet belongs to that character. The sheet is one asset. `CharacterSpriteAnimation` holds that one reference. Inside the asset, each clip is the frames in playback order plus the seconds each frame stays up: idle, move, dash, hit, attack, and death.
+The game has more than one character to choose from. Choosing one is part of starting a run. Each character has different talents and a different playstyle, plus their own spritesheet. The sheet is one asset. `CharacterSpriteAnimation` holds that one reference. Inside the asset, each clip is the frames in playback order plus the seconds each frame stays up: idle, move, dash, hit, attack, and death.
 
 The asset owns those clips. A clip does not own the asset, and a clip is not its own asset. Hit lock, the blink, invulnerability, and hiding the sprite on death stay on the character. The capsule stays on the body.
 
 The prefab still stores those lists on the component. The asset is not built.
 
-This is separate from co-op. Four players in one arena can still share one character. [0002-shared-arena-coop.md](0002-shared-arena-coop.md) already expects replay from a wider pool of characters, weapons, and items. It does not say those characters are selected, or that each one plays differently.
+This is separate from co-op. Four players in one arena can still share one character. [0002-shared-arena-coop.md](0002-shared-arena-coop.md) already expects replay from a wider pool of characters, weapons, and items. It does not say those characters are selected, or that each one has different talents and a different playstyle.
 
 ## Rejected
 
@@ -30,13 +30,13 @@ Six frame lists and six durations kept on the component once a second sheet exis
 
 ## Why
 
-Spell Brigade and Brotato both send a player in as a character that changes the run. Another sheet on one style would only change the drawing. The pool is stated here so the co-op decision is not asked to imply it.
+Spell Brigade and Brotato both send a player in as a character that changes the run. The change is talents and playstyle. Another sheet on the same talents would only change the drawing. The pool is stated here so the co-op decision is not asked to imply it.
 
 A second character is a second sheet. The component changes which sheet it plays. The frames and the frame time travel together, so they are one clip inside that sheet.
 
 ## Still open
 
-- What a style contains beyond its spritesheet: stats, starting weapons, items, modifiers, and special rules.
+- What a talent is made of, and what else a playstyle includes: stats, starting weapons, items, modifiers, and special rules.
 - How many characters a first release needs.
 - Whether two players in one match can pick the same character.
 - When selection happens, and the screen that does it.

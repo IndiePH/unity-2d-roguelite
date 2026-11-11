@@ -42,4 +42,4 @@ The run shape, the per-player view, party scaling, the weapon ring, the characte
 - [0003-party-scaling.md](DECISIONS/0003-party-scaling.md) — accepted starting balance. Not a wave-difficulty curve.
 - [0005-simulation-authority.md](DECISIONS/0005-simulation-authority.md) — accepted. Single writer, spawner, host later.
 - [0006-hovering-weapons.md](DECISIONS/0006-hovering-weapons.md) — accepted. Ring, and a profile per weapon type.
-- [0007-character-roster.md](DECISIONS/0007-character-roster.md) — accepted. A chosen character is a style. The spritesheet is one asset of clips. Not built.
+- [0007-character-roster.md](DECISIONS/0007-character-roster.md) — accepted. A chosen character has different talents and a different playstyle. The spritesheet is one asset of clips. Not built.

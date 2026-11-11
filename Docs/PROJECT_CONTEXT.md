@@ -8,7 +8,7 @@ Unity 6 (`6000.6.8f1`) URP 2D template named `unity-2d-roguelite`. The high conc
 
 ## Current gate
 
-Baseline — in progress. No project test assembly. The player is `CharacterSprite`, the only character prefab and the only character in `SampleScene`. A roster with character selection is accepted and not built: [0007-character-roster.md](DECISIONS/0007-character-roster.md). The sprite moves by rigidbody velocity. The arena is the `Tilemap`. `CameraBounds` is 33 by 21, offset (0.5, 0.5), centered on cell (0, 0). `CameraFollow` keeps the character centered until the view would leave that box, and the body stops on its edge. Detail: [character-sprite.md](FEATURE_SPECS/character-sprite.md), [camera-follow.md](FEATURE_SPECS/camera-follow.md).
+Baseline — in progress. No project test assembly. The player is `CharacterSprite`, the only character prefab and the only character in `SampleScene`. A roster of characters with different talents and playstyles is accepted and not built: [0007-character-roster.md](DECISIONS/0007-character-roster.md). The sprite moves by rigidbody velocity. The arena is the `Tilemap`. `CameraBounds` is 33 by 21, offset (0.5, 0.5), centered on cell (0, 0). `CameraFollow` keeps the character centered until the view would leave that box, and the body stops on its edge. Detail: [character-sprite.md](FEATURE_SPECS/character-sprite.md), [camera-follow.md](FEATURE_SPECS/camera-follow.md).
 
 ## Next step
 

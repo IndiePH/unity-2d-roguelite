@@ -4,7 +4,7 @@ Last updated: 2026-11-11
 
 # Character sprite
 
-The player is the spritesheet character in `Assets/Prefabs/CharacterSprite.prefab`. That is the only character prefab, and the only character in `SampleScene`. A roster, where a chosen character brings their own style and spritesheet, is accepted and not built: [0007-character-roster.md](../DECISIONS/0007-character-roster.md). The frame lists below are the fields on this prefab today. That decision makes the sheet one asset of clips, and this component holds the asset. That move has not been made.
+The player is the spritesheet character in `Assets/Prefabs/CharacterSprite.prefab`. That is the only character prefab, and the only character in `SampleScene`. A roster, where a chosen character brings different talents, a different playstyle, and their own spritesheet, is accepted and not built: [0007-character-roster.md](../DECISIONS/0007-character-roster.md). The frame lists below are the fields on this prefab today. That decision makes the sheet one asset of clips, and this component holds the asset. That move has not been made.
 
 ## Move
 

@@ -46,7 +46,7 @@ A hardcoded run of 20 waves. Twenty is the default value on the config asset.
 
 ## Why
 
-Build decisions stay with each player, while the fight is one arena. Replay is meant to come from a wider pool of characters, weapons, and items, not from a permanent stat climb. Choosing among those characters, and each one being its own style, is [0007-character-roster.md](0007-character-roster.md). A 4-player shared run is also the shape of The Spell Brigade: https://store.steampowered.com/app/2904000/The_Spell_Brigade/ The view is each character centered on that player's own camera until the arena edge, and the body stops there. Lens, shake sharing, split layout, and a remote player's view are not part of this decision.
+Build decisions stay with each player, while the fight is one arena. Replay is meant to come from a wider pool of characters, weapons, and items, not from a permanent stat climb. Choosing among those characters, each with different talents and a different playstyle, is [0007-character-roster.md](0007-character-roster.md). A 4-player shared run is also the shape of The Spell Brigade: https://store.steampowered.com/app/2904000/The_Spell_Brigade/ The view is each character centered on that player's own camera until the arena edge, and the body stops there. Lens, shake sharing, split layout, and a remote player's view are not part of this decision.
 
 The wave total is data so a different length does not require a new rule. Player-count scaling already ignores that total. Inventing a per-wave curve in the same step would pretend a formula exists.
 
