@@ -32,7 +32,7 @@ Six frame lists and six durations kept on the component once a second sheet exis
 
 Spell Brigade and Brotato both send a player in as a character that changes the run. The change is talents and playstyle. Another sheet on the same talents would only change the drawing. The pool is stated here so the co-op decision is not asked to imply it.
 
-A second character is a second sheet. The component changes which sheet it plays. The frames and the frame time travel together, so they are one clip inside that sheet.
+A second character is a second profile, and that profile references its own sheet. The frames and the frame time travel together, so they are one clip inside that sheet.
 
 ## Still open
 

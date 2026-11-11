@@ -20,13 +20,13 @@ Walking does not also move the body while a dash push is active, or while `Chara
 
 Invulnerability starts with the push and lasts 0.35 seconds. It does not blink. `maxUses` is 2. Each dash spends one. When a push ends, one use recharges after 1 second, then the next missing use if any.
 
-The dash frame list is empty, so the move frames stay up during the push.
+The dash clip on `Character100Sprites` is empty, so the move frames stay up during the push.
 
 ## Hit test
 
 P plays the hit frames once at full alpha, then calls `Character.Hit`. That raises `CharacterHit` with this character. `CameraShake` on the `MainCamera` prefab listens and plays the hit profile. That profile defaults to 0.16 seconds, 0.25 units, 1.5 degrees, and frequency 24. The camera eases back to the pose it had when the shake started. Another P during the clip or the blink does not call `Hit`. `stopMovementOnHit` defaults on: walking and dashing wait until that clip ends. When the clip ends, the prefab starts 1.25 seconds of invulnerability and the sprite blinks every 0.15 seconds. Another P does nothing during the clip and during that blink. The script defaults, if the prefab fields are cleared, are 0.5 seconds and 0.08 seconds.
 
-Attack frames are empty. Nothing plays them, and nothing applies damage. The attack is a ring of hovering weapons, not these frames: [hovering-weapons.md](hovering-weapons.md). That design is accepted and not built.
+The attack clip on that sheet is empty. Nothing plays it, and nothing applies damage. The attack is a ring of hovering weapons, not these frames: [hovering-weapons.md](hovering-weapons.md). That design is accepted and not built.
 
 ## Death test
 

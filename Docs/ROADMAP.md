@@ -26,4 +26,4 @@ Not started until gate 2 is done, and not started until gate 3 is done when the 
 
 ## Not a current gate
 
-Character roster and selection, each with different talents and a different playstyle: [0007-character-roster.md](DECISIONS/0007-character-roster.md). Accepted. Not started.
+Character selection is accepted and not started. The 100 HP and 70 HP profiles exist: [0007-character-roster.md](DECISIONS/0007-character-roster.md), [character-profile.md](FEATURE_SPECS/character-profile.md).
