@@ -28,7 +28,7 @@ Meta progression unlocks weapons, items, and other content through play. A Codex
 
 Each player has their own camera, and the screen is split so those views sit side by side. The camera follows that player's character and keeps the character at the center. It does not zoom out to frame the whole party.
 
-When centering would show past the arena, the camera stops at that edge and the character moves off center. The body stops at that same edge. The edge is a collider assigned on that camera. Detail: [camera-follow.md](../FEATURE_SPECS/camera-follow.md).
+When centering would show past the arena, the camera stops at that edge and the character moves off center. The body stops on a barrier around that box. The top of the barrier can sit off the box. Detail: [camera-follow.md](../FEATURE_SPECS/camera-follow.md).
 
 Lens, shake sharing, split layout, and what a remote player's view shows are not set.
 

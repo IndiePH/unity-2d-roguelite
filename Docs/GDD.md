@@ -9,7 +9,7 @@ Date: 2026-11-11.
 
 The high concept and the core loop below are still not decided. These are accepted. A line marked open is not.
 
-- Up to 4 players in one shared arena, waves, then a shop, each player with their own build. Each player has a camera that keeps their character at the center until the view would leave the arena, then the camera stops. The body stops at that same edge. The view is split. It does not zoom out to frame everyone. Accepted: [0002-shared-arena-coop.md](DECISIONS/0002-shared-arena-coop.md). Still open there: shops, revive, what fails the run, per-wave difficulty and timing, lens, and split layout.
+- Up to 4 players in one shared arena, waves, then a shop, each player with their own build. Each player has a camera that keeps their character at the center until the view would leave the arena, then the camera stops. The body stops on a barrier around that box, and the top of that barrier can sit off the box. The view is split. It does not zoom out to frame everyone. Accepted: [0002-shared-arena-coop.md](DECISIONS/0002-shared-arena-coop.md). Still open there: shops, revive, what fails the run, per-wave difficulty and timing, lens, and split layout.
 - A run has `waveCount` waves, default 20, edited on `GameConfig`. The last wave is that number. Player-count scaling does not change with that total, and there is no per-wave difficulty formula yet.
 - Enemy count and health scale with the players actually in the match. Accepted starting table: [0003-party-scaling.md](DECISIONS/0003-party-scaling.md). Still open: enemies already alive when someone joins or leaves.
 - Equipped weapons hover on a ring and attack on their own. Each weapon has a profile. The type decides its stats and behavior. Accepted: [0006-hovering-weapons.md](DECISIONS/0006-hovering-weapons.md). Not built. Nothing applies damage yet.
@@ -43,5 +43,5 @@ None. Direction above is the index. [brotato.md](REFERENCES/brotato.md) is a stu
 - [character-sprite.md](FEATURE_SPECS/character-sprite.md) — in progress.
 - [character-profile.md](FEATURE_SPECS/character-profile.md) — in progress. Two profiles, 100 and 70 hit points, each with a spritesheet.
 - [character-spawn.md](FEATURE_SPECS/character-spawn.md) — in progress. One character on a random open spawn point.
-- [camera-follow.md](FEATURE_SPECS/camera-follow.md) — in progress. Centered follow. The body stops at the arena edge.
+- [camera-follow.md](FEATURE_SPECS/camera-follow.md) — in progress. Centered follow. The body stops on the barrier. The scene top sits half a tile below the box.
 - [hovering-weapons.md](FEATURE_SPECS/hovering-weapons.md) — accepted design. Not built.
