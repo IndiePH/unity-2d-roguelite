@@ -28,7 +28,9 @@ Meta progression unlocks weapons, items, and other content through play. A Codex
 
 Each player has their own camera, and the screen is split so those views sit side by side. The camera follows that player's character and keeps the character at the center. It does not zoom out to frame the whole party.
 
-Further camera work waits. This file does not set lens, shake sharing, split layout, or what a remote player's view shows.
+When centering would show past the arena, the camera stops at that edge and the character moves off center. The body stops at that same edge. The edge is a collider assigned on that camera. Detail: [camera-follow.md](../FEATURE_SPECS/camera-follow.md).
+
+Lens, shake sharing, split layout, and what a remote player's view shows are not set.
 
 ## Rejected
 
@@ -44,7 +46,7 @@ A hardcoded run of 20 waves. Twenty is the default value on the config asset.
 
 ## Why
 
-Build decisions stay with each player, while the fight is one arena. Replay is meant to come from a wider pool of characters, weapons, and items, not from a permanent stat climb. Choosing among those characters, and each one being its own style, is [0007-character-roster.md](0007-character-roster.md). A 4-player shared run is also the shape of The Spell Brigade: https://store.steampowered.com/app/2904000/The_Spell_Brigade/ The view is each character centered on that player's own camera. Camera research is not part of this decision.
+Build decisions stay with each player, while the fight is one arena. Replay is meant to come from a wider pool of characters, weapons, and items, not from a permanent stat climb. Choosing among those characters, and each one being its own style, is [0007-character-roster.md](0007-character-roster.md). A 4-player shared run is also the shape of The Spell Brigade: https://store.steampowered.com/app/2904000/The_Spell_Brigade/ The view is each character centered on that player's own camera until the arena edge, and the body stops there. Lens, shake sharing, split layout, and a remote player's view are not part of this decision.
 
 The wave total is data so a different length does not require a new rule. Player-count scaling already ignores that total. Inventing a per-wave curve in the same step would pretend a formula exists.
 
@@ -56,7 +58,7 @@ The wave total is data so a different length does not require a new rule. Player
 - Per-wave duration, difficulty, and when elites or hordes appear.
 - Which challenges, Codex discoveries, or clears unlock which content.
 - Whether Endless mode is added after the initial design.
-- Camera layout and behavior beyond one centered character per player.
+- Lens, shake sharing, split layout, and what a remote player's view shows.
 - What happens to enemies already alive when the party size changes. See 0003.
 
 Do not add mechanics beyond this file unless a new decision records them.

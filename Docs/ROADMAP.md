@@ -2,7 +2,7 @@
 
 ## 1. Baseline — in progress
 
-No test assembly. Sprite movement, dash, hit, and death: [character-sprite.md](FEATURE_SPECS/character-sprite.md). Next play check: [PROJECT_CONTEXT.md](PROJECT_CONTEXT.md).
+No test assembly. Sprite movement, dash, hit, and death: [character-sprite.md](FEATURE_SPECS/character-sprite.md). Camera follow: [camera-follow.md](FEATURE_SPECS/camera-follow.md). Next play check: [PROJECT_CONTEXT.md](PROJECT_CONTEXT.md).
 
 Exit: the next task is one sentence.
 

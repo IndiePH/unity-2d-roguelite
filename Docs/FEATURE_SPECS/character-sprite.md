@@ -10,7 +10,7 @@ The player is the spritesheet character in `Assets/Prefabs/CharacterSprite.prefa
 
 `CharacterMovement` reads the WASD-only `MoveWasd` action and sets `Rigidbody2D.linearVelocity` in `FixedUpdate`.
 
-The sprite body is dynamic, gravity 0, rotation frozen, and interpolated. Its vertical `CapsuleCollider2D` is 0.22 by 0.35, offset (−0.015, 0.01), fitted to the opaque idle frame. `Assets/Settings/CharacterBody.physicsMaterial2D` has friction 0 and bounce 0. In `SampleScene`, the instance scale is 2. `Grid` has `Ground` and `GroundTop`. Both are tilemaps with renderers only, so neither stops the body.
+The sprite body is dynamic, gravity 0, rotation frozen, and interpolated. Its vertical `CapsuleCollider2D` is 0.22 by 0.35, offset (−0.015, 0.01), fitted to the opaque idle frame. `Assets/Settings/CharacterBody.physicsMaterial2D` has friction 0 and bounce 0. In `SampleScene`, the instance scale is 2. The arena is the `Tilemap`. Its tilemaps have renderers only, so they do not stop the body. `CameraBounds` stops the body on a solid edge around its trigger box. Detail: [camera-follow.md](camera-follow.md).
 
 Walking does not also move the body while a dash push is active, or while `Character.HoldMovement` is set.
 

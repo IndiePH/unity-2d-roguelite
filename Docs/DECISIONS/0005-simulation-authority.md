@@ -56,7 +56,7 @@ The player is the sprite in [character-sprite.md](../FEATURE_SPECS/character-spr
 
 ## Still not chosen
 
-- The open rules in 0002: shops, revive, what fails the run, per-wave difficulty and timing, and camera work beyond one centered character per player. Wave count is `GameConfig`, default 20.
+- The open rules in 0002: shops, revive, what fails the run, per-wave difficulty and timing, plus lens, shake sharing, split layout, and a remote player's view. The camera already stops at the arena edge. Wave count is `GameConfig`, default 20.
 - What happens to enemies already alive when the party size changes, in 0003.
 - The ranged shot, in 0006. The ring and the per-weapon profile are accepted. They are not built.
 - Which netcode library, tick rate, snapshot layout, and interest management.

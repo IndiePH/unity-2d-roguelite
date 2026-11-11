@@ -1,6 +1,7 @@
 using System;
 using UnityEngine;
 
+[DefaultExecutionOrder(100)]
 public class CameraShake : MonoBehaviour
 {
     [Serializable]
@@ -35,6 +36,8 @@ public class CameraShake : MonoBehaviour
         frequency = 16f
     };
 
+    [Tooltip("Follow pose this shake offsets. That component runs first. Empty means this shake owns the camera pose.")]
+    [SerializeField] CameraFollow follow;
     [SerializeField] CharacterHitChannel characterHit;
     [SerializeField] CharacterDeathChannel characterDeath;
 
@@ -114,8 +117,14 @@ public class CameraShake : MonoBehaviour
         float x = Mathf.PerlinNoise(seed, sample) * 2f - 1f;
         float y = Mathf.PerlinNoise(seed + 19f, sample) * 2f - 1f;
         float roll = Mathf.PerlinNoise(seed + 47f, sample) * 2f - 1f;
-        transform.localPosition = restLocalPosition + new Vector3(x, y, 0f) * (positionAmplitude * envelope);
-        transform.localRotation = restLocalRotation * Quaternion.Euler(0f, 0f, roll * rotationDegrees * envelope);
+        Vector3 offset = new Vector3(x, y, 0f) * (positionAmplitude * envelope);
+        Quaternion rollRotation = restLocalRotation * Quaternion.Euler(0f, 0f, roll * rotationDegrees * envelope);
+        if (follow != null)
+            transform.localPosition += offset;
+        else
+            transform.localPosition = restLocalPosition + offset;
+
+        transform.localRotation = rollRotation;
     }
 
     void OnDisable()
@@ -134,7 +143,9 @@ public class CameraShake : MonoBehaviour
     {
         shaking = false;
         timeLeft = 0f;
-        transform.localPosition = restLocalPosition;
+        if (follow == null)
+            transform.localPosition = restLocalPosition;
+
         transform.localRotation = restLocalRotation;
     }
 }

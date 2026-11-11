@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 6216206503799522149}
   - component: {fileID: 419082051203869090}
   - component: {fileID: 5492600555262077779}
+  - component: {fileID: 2464812298839299701}
   m_Layer: 0
   m_Name: MainCamera
   m_TagString: MainCamera
@@ -160,5 +161,21 @@ MonoBehaviour:
     positionAmplitude: 0.4
     rotationDegrees: 2.5
     frequency: 16
+  follow: {fileID: 2464812298839299701}
   characterHit: {fileID: 11400000, guid: 54c4436aaf98f294eb76cd9c9bf6ad87, type: 2}
   characterDeath: {fileID: 11400000, guid: 88e28a1e90f895545bc0cbbc0be5c946, type: 2}
+--- !u!114 &2464812298839299701
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8441580487597883996}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1d62f74fdbd0c154e8b6f993511933a5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::CameraFollow
+  target: {fileID: 0}
+  view: {fileID: 8877854621217895013}
+  confinement: {fileID: 0}
