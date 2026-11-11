@@ -4,13 +4,13 @@ Last updated: 2026-11-11
 
 # Character sprite
 
-The player is the spritesheet character in `Assets/Prefabs/CharacterSprite.prefab`. That is the only character prefab, and the only character in `SampleScene`. A roster, where a chosen character brings different talents, a different playstyle, and their own spritesheet, is accepted and not built: [0007-character-roster.md](../DECISIONS/0007-character-roster.md). The frame lists below are the fields on this prefab today. That decision makes the sheet one asset of clips, and this component holds the asset. That move has not been made.
+The player is the spritesheet character in `Assets/Prefabs/CharacterSprite.prefab`. That is the only character prefab. `SampleScene` spawns one instance on an open point: [character-spawn.md](character-spawn.md). The prefab uses the 100 HP profile. A 70 HP profile exists and is not spawned: [character-profile.md](character-profile.md). `CharacterSpriteAnimation` plays the sheet on the assigned profile.
 
 ## Move
 
 `CharacterMovement` reads the WASD-only `MoveWasd` action and sets `Rigidbody2D.linearVelocity` in `FixedUpdate`.
 
-The sprite body is dynamic, gravity 0, rotation frozen, and interpolated. Its vertical `CapsuleCollider2D` is 0.22 by 0.35, offset (−0.015, 0.01), fitted to the opaque idle frame. `Assets/Settings/CharacterBody.physicsMaterial2D` has friction 0 and bounce 0. In `SampleScene`, the instance scale is 2. The arena is the `Tilemap`. Its tilemaps have renderers only, so they do not stop the body. `CameraBounds` stops the body on a solid edge around its trigger box. Detail: [camera-follow.md](camera-follow.md).
+The sprite body is dynamic, gravity 0, rotation frozen, and interpolated. Its vertical `CapsuleCollider2D` is a 0.17 circle, offset (−0.01, −0.07), on the lower half of the opaque idle frame. The feet meet the bottom of that circle. The head sits about half a tile above it. `Assets/Settings/CharacterBody.physicsMaterial2D` has friction 0 and bounce 0. The prefab scale is 3. The arena is the `Tilemap`. Its tilemaps have renderers only, so they do not stop the body. `CameraBounds` stops the body on a solid edge around its trigger box. Detail: [camera-follow.md](camera-follow.md).
 
 Walking does not also move the body while a dash push is active, or while `Character.HoldMovement` is set.
 

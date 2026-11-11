@@ -13,9 +13,6 @@ public class CameraFollow : MonoBehaviour
         if (!Application.isPlaying)
             return;
 
-        if (target == null)
-            throw new MissingReferenceException($"{name} needs a follow target assigned.");
-
         if (view == null)
             throw new MissingReferenceException($"{name} needs a camera assigned.");
 
@@ -24,6 +21,20 @@ public class CameraFollow : MonoBehaviour
 
         if (confinement == null)
             throw new MissingReferenceException($"{name} needs a confinement collider assigned.");
+    }
+
+    void Start()
+    {
+        if (target == null)
+            throw new MissingReferenceException($"{name} needs a follow target assigned.");
+    }
+
+    public void Follow(Transform next)
+    {
+        if (next == null)
+            throw new MissingReferenceException($"{name} needs a follow target assigned.");
+
+        target = next;
     }
 
     void LateUpdate()

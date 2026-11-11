@@ -18,7 +18,7 @@ Input produces a command for the tick: a move vector, and whether dash was press
 
 Presentation plays sprites, motion, particles, and UI from what the simulation already decided. A presentation script does not change health, alive, position, or velocity. A reaction on another prefab uses an `EventChannel<T>` asset, raised after that state has changed. Same-prefab facts stay on the owner. Decision: [0004-event-channels.md](0004-event-channels.md).
 
-Objects created during play come from one spawner. The caller passes a kind, a position, and an owner, and receives an id. Wave logic, weapons, and pickups do not call `Instantiate`. The pool, once one exists, lives inside that spawner. Gameplay addresses the id. Objects placed in the scene, including the player, stay Inspector references under [0001-serialized-references.md](0001-serialized-references.md).
+Objects created during play come from one spawner. The caller passes a prefab, a pose, and an owner, and receives an id. Character placement, wave logic, weapons, and pickups do not call `Instantiate`. Character placement picks one open spawn point, then calls that spawner. One character occupies a point. Enemy pacing and loot choice are later callers of the same spawner. They are not separate spawners. The pool, once one exists, lives inside that spawner. Gameplay addresses the id. Objects that already exist in the scene stay Inspector references under [0001-serialized-references.md](0001-serialized-references.md). A character does not exist until the spawner creates it, so the camera receives that transform at play. Detail: [character-spawn.md](../FEATURE_SPECS/character-spawn.md).
 
 Enemy behavior is a record the simulation steps: position, velocity, health, target, state. A pooled view copies that record onto a sprite. Health bars, particles, and sounds are shared players with a budget. An enemy record does not own a canvas, a particle system, or an audio source.
 
@@ -38,6 +38,10 @@ Each spawned enemy carrying its own world-space UI, particle system, and audio s
 
 Gameplay scripts calling `Instantiate`, or finding a spawned object with a scene search.
 
+A spawner per kind. Character, enemy, and loot would each call `Instantiate`.
+
+One component that also schedules waves and chooses drops. Those rules choose a position. They are not creation.
+
 A second listener bus beside [0004-event-channels.md](0004-event-channels.md).
 
 A client telling the host where it stands or how much damage a hit dealt.
@@ -52,7 +56,7 @@ Unity physics is not a shared clock across machines. The host simulates. Clients
 
 ## Leftover on the current sprite
 
-The player is the sprite in [character-sprite.md](../FEATURE_SPECS/character-sprite.md). `CharacterMovement` and `CharacterDash` both set `linearVelocity`. `CharacterMovement` still contains a `transform.position` step for a missing rigidbody. The next movement change replaces both with the motor and removes that step. It waits until the play check in [PROJECT_CONTEXT.md](../PROJECT_CONTEXT.md) is done.
+The player is the sprite in [character-sprite.md](../FEATURE_SPECS/character-sprite.md). `SampleScene` spawns that one instance. `CharacterMovement` and `CharacterDash` both set `linearVelocity`. `CharacterMovement` still contains a `transform.position` step for a missing rigidbody. The next movement change replaces both with the motor and removes that step. It waits until the play check in [PROJECT_CONTEXT.md](../PROJECT_CONTEXT.md) is done.
 
 ## Still not chosen
 

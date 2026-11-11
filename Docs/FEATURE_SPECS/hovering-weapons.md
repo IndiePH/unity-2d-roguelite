@@ -20,7 +20,7 @@ They are spaced evenly on a circle in the player's local space. One weapon start
 
 Weapon sprites stay upright while they hover. They do not flip with the player's `flipX`.
 
-Starting values, not measurements from Brotato: local radius 0.55, turn rate 30 degrees per second. The scene instance scale is 2, so a child weapon inherits that scale.
+Starting values, not measurements from Brotato: local radius 0.55, turn rate 30 degrees per second. The character prefab scale is 3, so a child weapon inherits that scale.
 
 The ring is assigned on the sprite prefab. It is not looked up at runtime.
 

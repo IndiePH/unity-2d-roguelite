@@ -33,7 +33,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 2.5, y: 0, z: 0}
-  m_LocalScale: {x: 2, y: 2, z: 2}
+  m_LocalScale: {x: 3, y: 3, z: 3}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -85,7 +85,7 @@ SpriteRenderer:
   m_GlobalIlluminationMeshLod: 0
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 10
   m_MaskInteraction: 0
   m_Sprite: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -110,6 +110,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5010cc6ecd1a8dd44853e9b1db6e75d3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Character
+  profile: {fileID: 11400000, guid: 3b0e8f4a1c6d4e9f0a2b5c7d8e9f0a13, type: 2}
   characterHit: {fileID: 11400000, guid: 54c4436aaf98f294eb76cd9c9bf6ad87, type: 2}
   characterDeath: {fileID: 11400000, guid: 88e28a1e90f895545bc0cbbc0be5c946, type: 2}
 --- !u!114 &8939641012020373390
@@ -152,43 +153,7 @@ MonoBehaviour:
   dashMotion: {fileID: 6419082736451827301}
   spriteRenderer: {fileID: 688789668583970666}
   preview: 0
-  idle:
-  - {fileID: -4908484465254277661, guid: d2299cf80124446498ecff75cb99f0b7, type: 3}
-  - {fileID: 2634803378037534032, guid: d2299cf80124446498ecff75cb99f0b7, type: 3}
-  - {fileID: 9004509398020038451, guid: d2299cf80124446498ecff75cb99f0b7, type: 3}
-  - {fileID: 7375804620724820977, guid: d2299cf80124446498ecff75cb99f0b7, type: 3}
-  move:
-  - {fileID: 7990529665524305695, guid: d2299cf80124446498ecff75cb99f0b7, type: 3}
-  - {fileID: 6503333267291395722, guid: d2299cf80124446498ecff75cb99f0b7, type: 3}
-  - {fileID: -4686295651386926685, guid: d2299cf80124446498ecff75cb99f0b7, type: 3}
-  - {fileID: -3987136193687677404, guid: d2299cf80124446498ecff75cb99f0b7, type: 3}
-  - {fileID: 3915457598065188636, guid: d2299cf80124446498ecff75cb99f0b7, type: 3}
-  - {fileID: -6654455467158724130, guid: d2299cf80124446498ecff75cb99f0b7, type: 3}
-  dash: []
-  hit:
-  - {fileID: -2828245310038233088, guid: d2299cf80124446498ecff75cb99f0b7, type: 3}
-  - {fileID: -2769953876919334326, guid: d2299cf80124446498ecff75cb99f0b7, type: 3}
-  - {fileID: -5854480437956336281, guid: d2299cf80124446498ecff75cb99f0b7, type: 3}
-  - {fileID: 4999587732645322379, guid: d2299cf80124446498ecff75cb99f0b7, type: 3}
-  attack: []
-  death:
-  - {fileID: -5012201180115912116, guid: d2299cf80124446498ecff75cb99f0b7, type: 3}
-  - {fileID: 332544492545641233, guid: d2299cf80124446498ecff75cb99f0b7, type: 3}
-  - {fileID: 6498031086801649689, guid: d2299cf80124446498ecff75cb99f0b7, type: 3}
-  - {fileID: -1900745432340954270, guid: d2299cf80124446498ecff75cb99f0b7, type: 3}
-  - {fileID: -6577619634357940458, guid: d2299cf80124446498ecff75cb99f0b7, type: 3}
-  - {fileID: -6024042014086151761, guid: d2299cf80124446498ecff75cb99f0b7, type: 3}
-  - {fileID: -6694957076307506515, guid: d2299cf80124446498ecff75cb99f0b7, type: 3}
-  - {fileID: -2546562831214697333, guid: d2299cf80124446498ecff75cb99f0b7, type: 3}
-  - {fileID: -2438289909218661014, guid: d2299cf80124446498ecff75cb99f0b7, type: 3}
-  - {fileID: 5040928772351652536, guid: d2299cf80124446498ecff75cb99f0b7, type: 3}
-  - {fileID: 1973657053032888873, guid: d2299cf80124446498ecff75cb99f0b7, type: 3}
-  idleFrameDuration: 0.16
-  moveFrameDuration: 0.08
-  dashFrameDuration: 0.06
-  hitFrameDuration: 0.08
-  attackFrameDuration: 0.08
-  deathFrameDuration: 0.08
+  profile: {fileID: 11400000, guid: 3b0e8f4a1c6d4e9f0a2b5c7d8e9f0a13, type: 2}
   hideSpriteOnDeath: 1
   stopMovementOnHit: 1
   hitInvulnerableDuration: 1.25
@@ -275,6 +240,6 @@ CapsuleCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: -0.015, y: 0.01}
-  m_Size: {x: 0.22, y: 0.35}
+  m_Offset: {x: -0.01, y: -0.07}
+  m_Size: {x: 0.17, y: 0.17}
   m_Direction: 0

@@ -20,30 +20,7 @@ public class CharacterSpriteAnimation : MonoBehaviour
     [SerializeField] SpriteRenderer spriteRenderer;
     [Tooltip("Auto follows idle and move. Any other value locks that clip so the frames can be checked.")]
     [SerializeField] Preview preview;
-    [Tooltip("Idle frames from the sliced spritesheet, in playback order.")]
-    [SerializeField] Sprite[] idle;
-    [Tooltip("Move frames from the sliced spritesheet, in playback order.")]
-    [SerializeField] Sprite[] move;
-    [Tooltip("Dash frames from the sliced spritesheet, in playback order.")]
-    [SerializeField] Sprite[] dash;
-    [Tooltip("Hit frames from the sliced spritesheet, in playback order.")]
-    [SerializeField] Sprite[] hit;
-    [Tooltip("Attack frames from the sliced spritesheet, in playback order.")]
-    [SerializeField] Sprite[] attack;
-    [Tooltip("Death frames from the sliced spritesheet, in playback order.")]
-    [SerializeField] Sprite[] death;
-    [Tooltip("Seconds each idle frame stays on screen.")]
-    [SerializeField] float idleFrameDuration = 0.16f;
-    [Tooltip("Seconds each move frame stays on screen.")]
-    [SerializeField] float moveFrameDuration = 0.08f;
-    [Tooltip("Seconds each dash frame stays on screen.")]
-    [SerializeField] float dashFrameDuration = 0.06f;
-    [Tooltip("Seconds each hit frame stays on screen.")]
-    [SerializeField] float hitFrameDuration = 0.08f;
-    [Tooltip("Seconds each attack frame stays on screen.")]
-    [SerializeField] float attackFrameDuration = 0.08f;
-    [Tooltip("Seconds each death frame stays on screen.")]
-    [SerializeField] float deathFrameDuration = 0.08f;
+    [SerializeField] CharacterProfile profile;
     [Tooltip("Hide the sprite when the death clip ends. Off leaves the last frame visible.")]
     [SerializeField] bool hideSpriteOnDeath = true;
     [Tooltip("Stop walking and dashing while the hit clip plays.")]
@@ -75,6 +52,12 @@ public class CharacterSpriteAnimation : MonoBehaviour
         if (spriteRenderer == null)
             throw new MissingReferenceException($"{name} needs a SpriteRenderer assigned.");
 
+        if (profile == null)
+            throw new MissingReferenceException($"{name} needs a CharacterProfile assigned.");
+
+        if (profile.Sprites == null)
+            throw new MissingReferenceException($"{name} needs a sprite sheet on {profile.name}.");
+
         authoredColor = spriteRenderer.color;
     }
 
@@ -98,7 +81,7 @@ public class CharacterSpriteAnimation : MonoBehaviour
             if (!playingDeath)
                 return;
 
-            if (FinishedOnce(death, deathFrameDuration))
+            if (FinishedOnce(Clip(Preview.Death)))
             {
                 playingDeath = false;
                 if (hideSpriteOnDeath)
@@ -113,7 +96,7 @@ public class CharacterSpriteAnimation : MonoBehaviour
 
         if (playingHit)
         {
-            bool finished = FinishedOnce(hit, hitFrameDuration);
+            bool finished = FinishedOnce(Clip(Preview.Hit));
             if (!finished)
             {
                 ApplyFlip();
@@ -139,13 +122,12 @@ public class CharacterSpriteAnimation : MonoBehaviour
             showing = clip;
         }
 
-        Sprite[] frames = Frames(clip);
-        if (frames == null || frames.Length == 0)
+        SpriteClip spriteClip = Clip(clip);
+        if (!spriteClip.HasFrames)
             return;
 
-        float duration = Duration(clip);
-        if (duration < 0.0001f)
-            duration = 0.0001f;
+        Sprite[] frames = spriteClip.frames;
+        float duration = spriteClip.SafeDuration;
 
         timer += Time.deltaTime;
         while (timer >= duration)
@@ -164,7 +146,8 @@ public class CharacterSpriteAnimation : MonoBehaviour
 
     void BeginDeath()
     {
-        if (character.IsDead || death == null || death.Length == 0)
+        SpriteClip clip = Clip(Preview.Death);
+        if (character.IsDead || !clip.HasFrames)
             return;
 
         character.Die();
@@ -174,13 +157,14 @@ public class CharacterSpriteAnimation : MonoBehaviour
         timer = 0f;
         blinkUntil = 0f;
         spriteRenderer.color = authoredColor;
-        if (death[0] != null)
-            spriteRenderer.sprite = death[0];
+        if (clip.frames[0] != null)
+            spriteRenderer.sprite = clip.frames[0];
     }
 
     void BeginHit()
     {
-        if (character.IsDead || hit == null || hit.Length == 0)
+        SpriteClip clip = Clip(Preview.Hit);
+        if (character.IsDead || !clip.HasFrames)
             return;
 
         playingHit = true;
@@ -190,8 +174,8 @@ public class CharacterSpriteAnimation : MonoBehaviour
         if (stopMovementOnHit)
             character.SetHoldMovement(true);
 
-        if (hit[0] != null)
-            spriteRenderer.sprite = hit[0];
+        if (clip.frames[0] != null)
+            spriteRenderer.sprite = clip.frames[0];
 
         character.Hit();
     }
@@ -212,13 +196,13 @@ public class CharacterSpriteAnimation : MonoBehaviour
             spriteRenderer.color = authoredColor;
     }
 
-    bool FinishedOnce(Sprite[] frames, float duration)
+    bool FinishedOnce(SpriteClip clip)
     {
-        if (frames == null || frames.Length == 0)
+        if (!clip.HasFrames)
             return true;
 
-        if (duration < 0.0001f)
-            duration = 0.0001f;
+        Sprite[] frames = clip.frames;
+        float duration = clip.SafeDuration;
 
         timer += Time.deltaTime;
         if (timer < duration)
@@ -248,34 +232,22 @@ public class CharacterSpriteAnimation : MonoBehaviour
     Preview AutoClip()
     {
         if (dashMotion.IsImpulse)
-            return dash != null && dash.Length > 0 ? Preview.Dash : Preview.Move;
+            return Clip(Preview.Dash).HasFrames ? Preview.Dash : Preview.Move;
 
         return movement.IsMoving ? Preview.Move : Preview.Idle;
     }
 
-    Sprite[] Frames(Preview clip)
+    SpriteClip Clip(Preview clip)
     {
+        CharacterSpriteSheet sheet = profile.Sprites;
         switch (clip)
         {
-            case Preview.Move: return move;
-            case Preview.Dash: return dash;
-            case Preview.Hit: return hit;
-            case Preview.Attack: return attack;
-            case Preview.Death: return death;
-            default: return idle;
-        }
-    }
-
-    float Duration(Preview clip)
-    {
-        switch (clip)
-        {
-            case Preview.Move: return moveFrameDuration;
-            case Preview.Dash: return dashFrameDuration;
-            case Preview.Hit: return hitFrameDuration;
-            case Preview.Attack: return attackFrameDuration;
-            case Preview.Death: return deathFrameDuration;
-            default: return idleFrameDuration;
+            case Preview.Move: return sheet.Move;
+            case Preview.Dash: return sheet.Dash;
+            case Preview.Hit: return sheet.Hit;
+            case Preview.Attack: return sheet.Attack;
+            case Preview.Death: return sheet.Death;
+            default: return sheet.Idle;
         }
     }
 }

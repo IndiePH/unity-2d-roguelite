@@ -6,6 +6,8 @@ public class CameraBoundsBarrier : MonoBehaviour
     [SerializeField] BoxCollider2D area;
     [Tooltip("Solid loop on the outside of the area. Its radius is the wall thickness on each side of the line.")]
     [SerializeField] EdgeCollider2D barrier;
+    [Tooltip("Moves the top edge up, in the same local units as the area. Positive lets the body walk higher than the box. Half a tile is 0.5.")]
+    [SerializeField] float topOffset;
 
     void OnEnable()
     {
@@ -44,6 +46,7 @@ public class CameraBoundsBarrier : MonoBehaviour
         Vector2 half = area.size * 0.5f + new Vector2(radius, radius);
         Vector2 min = center - half;
         Vector2 max = center + half;
+        max.y += topOffset;
         Vector2[] points =
         {
             new Vector2(min.x, min.y),
