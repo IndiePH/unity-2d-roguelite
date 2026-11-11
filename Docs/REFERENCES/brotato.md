@@ -4,12 +4,12 @@ Study of Brotato for an original arena-survival roguelite. This is not a specifi
 
 Transferred 2026-11-11. Statements here are simplified design observations until someone checks them against a Brotato version. When adding a fact, label it: verified feature, observed behavior, secondary-source claim, interpretation, or original proposal.
 
-The project plan stays in [ROADMAP.md](../ROADMAP.md). Gameplay is not settled: [GDD.md](../GDD.md).
+The project plan stays in [ROADMAP.md](../ROADMAP.md). The high concept and the core loop are not settled: [GDD.md](../GDD.md).
 
-Proposals taken from this study, still not accepted:
+Decisions taken from this study:
 
-- [0002-shared-arena-coop.md](../DECISIONS/0002-shared-arena-coop.md)
-- [0003-party-scaling.md](../DECISIONS/0003-party-scaling.md)
+- [0002-shared-arena-coop.md](../DECISIONS/0002-shared-arena-coop.md) — accepted. This study is not that decision.
+- [0003-party-scaling.md](../DECISIONS/0003-party-scaling.md) — accepted starting table. This study is not that decision.
 
 Steam: https://store.steampowered.com/app/1942280/Brotato/
 
@@ -19,7 +19,7 @@ Shop: https://brotato.wiki.spellsandguns.com/Shop
 
 Co-op figures below are a community analysis of Brotato 1.1.15.4, not an official spec: https://brotatodb.com/co-op
 
-Monster Hunter party-size principle cited by the scaling proposal: https://news.capcomusa.com/2019/09/04/housekeeping-monster-hunter-world-and-mhw-iceborne-logistics/
+Monster Hunter party-size principle cited by the scaling decision: https://news.capcomusa.com/2019/09/04/housekeeping-monster-hunter-world-and-mhw-iceborne-logistics/
 
 ## Core pattern
 
@@ -66,7 +66,7 @@ Feedback the combat needs: hits, crits, blocked or reduced damage, player damage
 
 Pressure comes from density, spawn direction, projectile patterns, movement limits, elite modifiers, and time. Raising health alone does not create variety.
 
-Current player work is [character-sprite.md](../FEATURE_SPECS/character-sprite.md): move, dash, a hit test, a death test that hides the sprite, and attack frames that are preview-only. Auto-fire is not decided. Do not treat this combat model as a replacement for that spec.
+Current player work is [character-sprite.md](../FEATURE_SPECS/character-sprite.md): move, dash, a hit test, a death test that hides the sprite, and attack frames that are unused. The hovering-weapon attack is accepted and not built: [hovering-weapons.md](../FEATURE_SPECS/hovering-weapons.md). Do not treat this combat model as a replacement for that spec.
 
 Still open for our game: manual aim or not, acceleration versus instant movement, whether enemies push each other, which defensive actions exist besides dash, combat speed, and average density.
 
@@ -91,7 +91,7 @@ Unlocks can ask for a weapon class, a stat or economy milestone, a boss approach
 
 Judge a character in the early, middle, and late run, and across more than one build. Early power with bad scaling, or a weak start that dominates later, are both failures if they are accidental.
 
-Still open: equal power versus intentional difficulty, whether every character can use every weapon and item, additive versus multiplicative versus rule-changing modifiers, whether a character mechanic can be upgraded mid-run, and how many characters a first release needs. This project has a capsule body and one spritesheet character. A roster is not started. See [character-sprite.md](../FEATURE_SPECS/character-sprite.md).
+Still open: equal power versus intentional difficulty, whether every character can use every weapon and item, additive versus multiplicative versus rule-changing modifiers, whether a character mechanic can be upgraded mid-run, and how many characters a first release needs. The player is one spritesheet character. A roster is not started. See [character-sprite.md](../FEATURE_SPECS/character-sprite.md).
 
 ## Weapons and loadout
 
@@ -222,13 +222,13 @@ Brotato uses Danger levels. An original game can use names, numbers, modifiers, 
 
 A standard run needs a wave count, milestone waves for elites or bosses, varied duration and composition, a final wave with a victory condition, and a defeat condition with a result.
 
-Endless continues past the standard ending. Decide rewards after the standard clear, how stats and spawns keep rising, whether new mixes appear, whether there is a best, and whether it simply runs until defeat. Endless was not required for the initial original-game direction. See the co-op proposal.
+Endless continues past the standard ending. Decide rewards after the standard clear, how stats and spawns keep rising, whether new mixes appear, whether there is a best, and whether it simply runs until defeat. Endless is not part of the accepted design. See [0002-shared-arena-coop.md](../DECISIONS/0002-shared-arena-coop.md).
 
 Accessibility and custom challenge can cover enemy health and damage, move speed, game speed, aim assist, and clarity. If records or leaderboards exist, keep accessibility settings off those records.
 
 Track clear rate, average wave, time to death, damage taken, and build results by character and difficulty. A clear should not depend only on a lucky shop.
 
-Still open: how many tiers, whether they unlock in order, the real run length, whether endless ships at the start, and whether custom modifiers count for achievements.
+Still open: how many tiers, whether they unlock in order, and whether custom modifiers count for achievements. Run length is `GameConfig`, default 20. Endless is not part of the initial design.
 
 ## Meta progression and supporting features
 
@@ -244,7 +244,7 @@ Show a lock, its requirement, and progress. On unlock, say what arrived and wher
 
 The reference also mentions pause and resume, wave retry on some versions, accessibility and custom difficulty, stat tracking, a build summary, controller and keyboard, rebinding, save and resume, localization, and audio, visual, and gameplay settings. Platform and option names vary. Verify before treating any of them as requirements.
 
-Co-op changes combat balance, UI, targeting, enemy behavior, and saves, so it has to be decided early if it is in scope. The proposal is in [0002-shared-arena-coop.md](../DECISIONS/0002-shared-arena-coop.md). Questions that proposal does not answer: shared versus separate currency, revive, camera, whether two players can pick the same character.
+Co-op is accepted in [0002-shared-arena-coop.md](../DECISIONS/0002-shared-arena-coop.md). Each player has a camera with their character at the center. That decision still leaves open: shared versus separate currency, revive, camera layout beyond that center, and whether two players can pick the same character.
 
 Accessibility to consider later: game speed, less shake and flashing, colorblind indicators, readable and scalable text, aim assist, remapping, audio cues that also have a visual, and less clutter.
 
@@ -296,7 +296,7 @@ Workstreams named, not scheduled: run state, data-driven weapons and items, enem
 
 Metrics worth recording once a loop exists: average wave reached, run duration, damage dealt and taken, time spent near enemies, currency earned and spent, purchases and rerolls, weapon performance, character win rates, death causes.
 
-## Co-op reference, not the proposal
+## Co-op reference, not the decision
 
 Brotato co-op, as reported for 1.1.15.4 and not verified here:
 
@@ -307,7 +307,7 @@ Brotato co-op, as reported for 1.1.15.4 and not verified here:
 - Materials and XP are credited to players in turn, not only to whoever picked the drop up.
 - Each player keeps their own character, build, inventory, level-up choices, and shop.
 
-The original-game proposal does not adopt the HP or damage coefficients. It does use the count curve and a different HP curve, and it treats turn-based loot plus individual shops as the economy reference while leaving the exact implementation open. Numbers and the open list are in the two decision files, not here.
+The accepted decisions do not adopt the HP or damage coefficients. They do use the count curve and a different HP curve, and they treat turn-based loot plus individual shops as the economy reference while leaving the exact implementation open. Numbers and the open list are in the two decision files, not here.
 
 ## Open questions
 
@@ -315,11 +315,11 @@ These have to be answered before this study can become a GDD. Unanswered items a
 
 Identity: player fantasy, setting, theme, visual identity, what is not Brotato, and tone.
 
-Camera and arena: top-down or angled, fixed or procedural or a few layouts, obstacles and hazards, whether the whole arena is walkable.
+Camera and arena: each player has their own camera with their character at the center, in [0002-shared-arena-coop.md](../DECISIONS/0002-shared-arena-coop.md). Further camera work, and the arena layout, are not chosen.
 
-Combat: movement as the only active input or not, manual aim, dashes and other defenses, speed and density, targeting per weapon family. The sprite character already dashes. Hit and death are tests, and attack frames are preview-only. Auto-fire does not. Detail: [character-sprite.md](../FEATURE_SPECS/character-sprite.md).
+Combat: movement as the only active input or not, manual aim, dashes and other defenses, speed and density, targeting per weapon family. The sprite character already dashes. Hit and death are tests, and attack frames are unused. Auto-fire from a ring, with a profile per weapon, is accepted and not built: [hovering-weapons.md](../FEATURE_SPECS/hovering-weapons.md). Detail: [character-sprite.md](../FEATURE_SPECS/character-sprite.md).
 
-Run: the 20-wave pattern is the reference length only. Exact timings and the special-wave schedule are not chosen. Endless at launch is not chosen.
+Run: wave count is `GameConfig`, default 20, in [0002-shared-arena-coop.md](../DECISIONS/0002-shared-arena-coop.md). This study's 20-wave timing is a reference, not that config. Exact timings and the special-wave schedule are not chosen. Endless at launch is not part of the design.
 
 Build: slot count, tier count, merge or evolve, classes, which attributes, negative item modifiers, how synergies are shown.
 
@@ -327,7 +327,7 @@ Economy: the study points at turn-based material and XP credit with individual b
 
 Content: launch roster size, what is unlocked, whether unlocks are per character, achievements, the first enemy roster.
 
-Production: platforms, controller support, localization, save and resume, and the smallest shippable version. Co-op scope is the proposed decision, not an accepted one.
+Production: platforms, controller support, localization, save and resume, and the smallest shippable version. Co-op scope is accepted in [0002-shared-arena-coop.md](../DECISIONS/0002-shared-arena-coop.md). These production items are not.
 
 ## Verification
 

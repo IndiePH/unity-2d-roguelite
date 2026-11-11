@@ -1,6 +1,6 @@
 # Technical Design
 
-No gameplay architecture is settled. The sprite character that exists is specified in [character-sprite.md](FEATURE_SPECS/character-sprite.md).
+The run shape, the per-player view, party scaling, the weapon ring, and who may write gameplay state are settled. The high concept and the core loop are not. The player is the sprite in [character-sprite.md](FEATURE_SPECS/character-sprite.md).
 
 ## Settled facts
 
@@ -10,21 +10,32 @@ No gameplay architecture is settled. The sprite character that exists is specifi
 - Docs: in-repo under `Docs/` only. Collab rules: [README.md](README.md).
 - Input: new Input System (`activeInputHandler` 1). Package `com.unity.inputsystem` 1.20.1. Asset: `Assets/Settings/InputSystem_Actions.inputactions`.
 - Component wiring: known references are `[SerializeField]` on the prefab. Decision: [0001-serialized-references.md](DECISIONS/0001-serialized-references.md). Rule: `.cursor/rules/unity-serialized-references.mdc`.
+- Simulation: one local authority writes gameplay state on a fixed step. One motor writes a rigidbody. Runtime spawns go through a spawner and are addressed by id. Presentation listens. A later host would run that same simulation. Decision: [0005-simulation-authority.md](DECISIONS/0005-simulation-authority.md).
+- Events: the simulation raises an `EventChannel<T>` after it commits a fact another prefab must hear. Same-prefab reads stay on the owner. Hit is `Assets/Settings/Events/CharacterHit.asset`. Death is `Assets/Settings/Events/CharacterDeath.asset`. Decision: [0004-event-channels.md](DECISIONS/0004-event-channels.md).
+- Run length: `GameConfig.waveCount` on `Assets/Settings/GameConfig.asset`. Default 20. The last wave is that value. Decision: [0002-shared-arena-coop.md](DECISIONS/0002-shared-arena-coop.md).
 
 ## Current owners
 
-- Character: `Assets/Scripts/Character.cs` on both character prefabs. Invulnerability, movement hold, and death. No damage. Detail: [character-sprite.md](FEATURE_SPECS/character-sprite.md).
-- CharacterMovement: `Assets/Scripts/CharacterMovement.cs` on both prefabs. WASD. The capsule writes its transform. The sprite sets `linearVelocity`. Detail: [character-sprite.md](FEATURE_SPECS/character-sprite.md).
-- CharacterDash: `Assets/Scripts/CharacterDash.cs` on the sprite prefab only. Left Shift velocity push, two stored uses. Detail: [character-sprite.md](FEATURE_SPECS/character-sprite.md).
-- CharacterSpriteAnimation: `Assets/Scripts/CharacterSpriteAnimation.cs` on the sprite prefab only. Frame lists, the P hit test, and the L death test. Detail: [character-sprite.md](FEATURE_SPECS/character-sprite.md).
+- Character: `Assets/Scripts/Character.cs` on the sprite prefab. Invulnerability, movement hold, and death. `Hit` raises `CharacterHit`. `Die` raises `CharacterDeath`. No damage. There is no capsule prefab. Detail: [character-sprite.md](FEATURE_SPECS/character-sprite.md).
+- CharacterMovement: `Assets/Scripts/CharacterMovement.cs` on the sprite prefab. WASD sets `linearVelocity`. It still steps `transform.position` when no rigidbody is assigned. Both this and dash write velocity until the motor in [0005-simulation-authority.md](DECISIONS/0005-simulation-authority.md). Detail: [character-sprite.md](FEATURE_SPECS/character-sprite.md).
+- CharacterDash: `Assets/Scripts/CharacterDash.cs` on the sprite prefab. Left Shift velocity push, two stored uses. Detail: [character-sprite.md](FEATURE_SPECS/character-sprite.md).
+- CharacterSpriteAnimation: `Assets/Scripts/CharacterSpriteAnimation.cs` on the sprite prefab only. Frame lists, the P hit test, and the L death test. P calls `Character.Hit` after the hit clip starts. Detail: [character-sprite.md](FEATURE_SPECS/character-sprite.md).
+- CameraShake: `Assets/Scripts/CameraShake.cs` on the `MainCamera` prefab. Listens to `CharacterHit` and `CharacterDeath`. Hit and death profiles stay on this component. The `SampleScene` instance is named Main Camera. Detail: [character-sprite.md](FEATURE_SPECS/character-sprite.md).
+- EventChannel: `Assets/Scripts/EventChannel.cs`, with `CharacterHitChannel` and `CharacterDeathChannel`. Assets: `Assets/Settings/Events/`. Decision: [0004-event-channels.md](DECISIONS/0004-event-channels.md).
+- GameConfig: `Assets/Scripts/GameConfig.cs`. Asset: `Assets/Settings/GameConfig.asset`. Wave count only. The wave runner does not exist yet. Decision: [0002-shared-arena-coop.md](DECISIONS/0002-shared-arena-coop.md).
 
 ## Absent
 
 - `*.asmdef`, `Assets/Tests`, EditMode assembly, gameplay rules.
+- Motor, spawner, wave runner, weapon ring, and any network code. The boundaries are the accepted decisions. The objects are not built.
 
 ## Active children
 
 - [0001-serialized-references.md](DECISIONS/0001-serialized-references.md) — accepted. Inspector references for known components and assets.
+- [0004-event-channels.md](DECISIONS/0004-event-channels.md) — accepted. Cross-prefab listen after the simulation commits. Same-prefab reads stay on the owner.
 - [character-sprite.md](FEATURE_SPECS/character-sprite.md) — in progress. Sprite movement, dash, hit test, death test, and the tilemap collider.
-- [0002-shared-arena-coop.md](DECISIONS/0002-shared-arena-coop.md) — proposed. Not architecture.
-- [0003-party-scaling.md](DECISIONS/0003-party-scaling.md) — proposed balance. Not architecture.
+- [hovering-weapons.md](FEATURE_SPECS/hovering-weapons.md) — accepted design, not built. Detail for [0006-hovering-weapons.md](DECISIONS/0006-hovering-weapons.md).
+- [0002-shared-arena-coop.md](DECISIONS/0002-shared-arena-coop.md) — accepted mode. Per-player camera, character centered. Wave count is config, default 20.
+- [0003-party-scaling.md](DECISIONS/0003-party-scaling.md) — accepted starting balance. Not a wave-difficulty curve.
+- [0005-simulation-authority.md](DECISIONS/0005-simulation-authority.md) — accepted. Single writer, spawner, host later.
+- [0006-hovering-weapons.md](DECISIONS/0006-hovering-weapons.md) — accepted. Ring, and a profile per weapon type.

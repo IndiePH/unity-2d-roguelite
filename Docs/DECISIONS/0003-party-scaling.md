@@ -1,10 +1,10 @@
-Status: proposed
+Status: accepted
 Owner: Vincent Veran
 Last updated: 2026-11-11
 
 # Party scaling
 
-Proposed balance for the shared-arena run in [0002-shared-arena-coop.md](0002-shared-arena-coop.md). Not a locked spec. Not accepted. Do not implement it during the baseline gate.
+Accepted starting balance for the shared-arena run in [0002-shared-arena-coop.md](0002-shared-arena-coop.md). Do not build enemy counts during the baseline gate. The test at the end of this file is how these numbers change later.
 
 Study: [brotato.md](../REFERENCES/brotato.md).
 
@@ -31,9 +31,11 @@ Bosses use the same HP curve. Do not add bosses because more players joined. If 
 
 Do not multiply an individual enemy's damage by party size. The extra enemies are already more attacks.
 
-Material value per enemy uses the table for initial testing. Those figures are the Brotato co-op report, not a measurement from this project. XP quantity is not in this proposal. Turn-based credit of materials and XP is the economy reference in 0002, and that decision still leaves the exact rule open.
+Material value per enemy uses the table for initial testing. Those figures are the Brotato co-op report, not a measurement from this project. XP quantity is not in this decision. Turn-based credit of materials and XP is the economy reference in 0002, and that decision still leaves the exact rule open.
 
 When someone joins or leaves, later spawns use the new count. What happens to enemies already alive is not chosen: rescale their current HP proportionally, or leave them and scale only new spawns. Do not silently heal or damage them as a side effect of the choice.
+
+`GameConfig.waveCount` is not an input. The same table applies on a 20-wave run, a 50-wave run, a 100-wave run, and a 1000-wave run. It does not define how hard wave 40 is compared with wave 4.
 
 Does not scale: wave duration, number of waves, wave schedule, boss count, individual enemy damage, player stats, weapon power.
 
@@ -47,9 +49,9 @@ Multiplying the number of bosses by party size. Brotato's boss count follows Dan
 
 ## Why
 
-More players should make the arena busier and each normal enemy somewhat tougher. Stacking count, HP, and damage at once spikes incoming damage before anyone has played it. The table is a first guess. Adjust it from the test below. Do not treat it as final because the arithmetic is tidy.
+More players should make the arena busier and each normal enemy somewhat tougher. Stacking count, HP, and damage at once spikes incoming damage before anyone has played it. This table is the accepted start. Replace it from the test below.
 
-## Test before locking
+## Test when the numbers change
 
 Run the same wave with 1, 2, 3, and 4 players on comparable builds. Record enemies spawned and defeated, HP removed, time to kill, damage taken per player and by the party, downs, materials and XP per player, frame time, and the maximum number of enemies alive.
 
