@@ -17,7 +17,7 @@ The run shape, the per-player view, party scaling, the weapon ring, the characte
 
 ## Current owners
 
-- Character: `Assets/Scripts/Character.cs` on the sprite prefab. Reads `MaxHp` from the assigned profile. Invulnerability, movement hold, and death. `Hit` raises `CharacterHit`. `Die` raises `CharacterDeath`. No damage. There is no capsule prefab. Detail: [character-sprite.md](FEATURE_SPECS/character-sprite.md), [character-profile.md](FEATURE_SPECS/character-profile.md).
+- Character: `Assets/Scripts/Character.cs` on the sprite prefab. Reads `MaxHp` from the assigned profile. Invulnerability, movement hold, and death. `Hit` raises `CharacterHit`. `Die` raises `CharacterDeath`. No damage. There is no capsule prefab. A `Hurt` child on layer `PlayerHurt` is the combat trigger. That layer meets nothing yet. Detail: [character-sprite.md](FEATURE_SPECS/character-sprite.md), [character-profile.md](FEATURE_SPECS/character-profile.md).
 - CharacterMovement: `Assets/Scripts/CharacterMovement.cs` on the sprite prefab. WASD sets `linearVelocity`. It still steps `transform.position` when no rigidbody is assigned. Both this and dash write velocity until the motor in [0005-simulation-authority.md](DECISIONS/0005-simulation-authority.md). Detail: [character-sprite.md](FEATURE_SPECS/character-sprite.md).
 - CharacterDash: `Assets/Scripts/CharacterDash.cs` on the sprite prefab. Left Shift velocity push, two stored uses. Detail: [character-sprite.md](FEATURE_SPECS/character-sprite.md).
 - CharacterProfile: `Assets/Scripts/CharacterProfile.cs`. Assets: `Assets/Settings/Characters/Character100.asset` (100 hit points) and `Character70.asset` (70). Each references its own `CharacterSpriteSheet`. The prefab uses `Character100`. Detail: [character-profile.md](FEATURE_SPECS/character-profile.md).
@@ -28,14 +28,13 @@ The run shape, the per-player view, party scaling, the weapon ring, the characte
 - CameraShake: `Assets/Scripts/CameraShake.cs` on the `MainCamera` prefab. Listens to `CharacterHit` and `CharacterDeath`. Hit and death profiles stay on this component. It runs after `CameraFollow` and offsets that pose. The `SampleScene` instance is named Main Camera. Detail: [character-sprite.md](FEATURE_SPECS/character-sprite.md).
 - EventChannel: `Assets/Scripts/EventChannel.cs`, with `CharacterHitChannel` and `CharacterDeathChannel`. Assets: `Assets/Settings/Events/`. Decision: [0004-event-channels.md](DECISIONS/0004-event-channels.md).
 - GameConfig: `Assets/Scripts/GameConfig.cs`. Asset: `Assets/Settings/GameConfig.asset`. Wave count only. The wave runner does not exist yet. Decision: [0002-shared-arena-coop.md](DECISIONS/0002-shared-arena-coop.md).
-- Spawner: `Assets/Scripts/Spawner.cs`. The only `Instantiate`. A caller passes a prefab, a pose, and an owner, and receives an id. No pool yet. Decision: [0005-simulation-authority.md](DECISIONS/0005-simulation-authority.md).
+- Spawner: `Assets/Scripts/Spawner.cs`. The only `Instantiate`. A caller passes a prefab, a pose, and an owner, and receives an id. `Release` enqueues that instance. The next rent dequeues the one that has waited longest. The id is not reused. Detail: [spawner-pool.md](FEATURE_SPECS/spawner-pool.md). Decision: [0005-simulation-authority.md](DECISIONS/0005-simulation-authority.md).
 - CharacterSpawner: `Assets/Scripts/CharacterSpawner.cs` on `Spawner` in `SampleScene`. Spawns one `CharacterSprite` on a random open `SpawnPoint`, then assigns that transform to `CameraFollow`. Detail: [character-spawn.md](FEATURE_SPECS/character-spawn.md).
 - SpawnPoint: `Assets/Scripts/SpawnPoint.cs` on `SpawnPoint01` through `SpawnPoint04`. One occupant. An inactive or disabled point is not a choice.
 
 ## Absent
 
 - Motor, wave runner, weapon ring, enemy spawn, loot spawn, and any network code. The boundaries are the accepted decisions. Those objects are not built.
-- A pool inside `Spawner`. Ids are kept. Nothing returns an instance to the pool.
 
 ## Active children
 
@@ -44,6 +43,7 @@ The run shape, the per-player view, party scaling, the weapon ring, the characte
 - [character-sprite.md](FEATURE_SPECS/character-sprite.md) — in progress. Sprite movement, dash, hit test, and death test. The tilemap does not block the body. The arena edge does.
 - [character-profile.md](FEATURE_SPECS/character-profile.md) — in progress. Two profiles, 100 and 70 hit points, each with a spritesheet.
 - [character-spawn.md](FEATURE_SPECS/character-spawn.md) — in progress. One character on a random open spawn point.
+- [spawner-pool.md](FEATURE_SPECS/spawner-pool.md) — in progress. One queue inside `Spawner`. A returned instance keeps no id.
 - [hovering-weapons.md](FEATURE_SPECS/hovering-weapons.md) — accepted design, not built. Detail for [0006-hovering-weapons.md](DECISIONS/0006-hovering-weapons.md).
 - [0002-shared-arena-coop.md](DECISIONS/0002-shared-arena-coop.md) — accepted mode. Per-player camera, character centered until the arena edge. Wave count is config, default 20.
 - [camera-follow.md](FEATURE_SPECS/camera-follow.md) — in progress. Follow, confinement, and the body edge.

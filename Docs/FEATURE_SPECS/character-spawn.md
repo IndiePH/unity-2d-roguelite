@@ -10,7 +10,7 @@ The points under `SpawnPoints` are `SpawnPoint01` through `SpawnPoint04`. Each h
 
 One character occupies one point. Another character, when one exists, takes a different open point. A dead character keeps the point. There is no respawn.
 
-`Spawner` is the only `Instantiate`. `CharacterSpawner` passes the character prefab, the point's pose, and itself as the owner, and receives an id. Enemy pacing and loot choice are not this component. When they exist, they call `Spawner`. They do not get a second spawner. Decision: [0005-simulation-authority.md](../DECISIONS/0005-simulation-authority.md).
+`Spawner` is the only `Instantiate`. `CharacterSpawner` passes the character prefab, the point's pose, and itself as the owner, and receives an id. The instance is rented from the pool inside `Spawner` and parented to that object. This caller does not return it. Enemy pacing and loot choice are not this component. When they exist, they call `Spawner`. They do not get a second spawner. Decision: [0005-simulation-authority.md](../DECISIONS/0005-simulation-authority.md). Detail: [spawner-pool.md](spawner-pool.md).
 
 `CameraFollow` in `SampleScene` has no target in the editor. `CharacterSpawner` assigns the spawned character before the first frame. A later character does not take that camera. Split views stay open in [0002-shared-arena-coop.md](../DECISIONS/0002-shared-arena-coop.md).
 

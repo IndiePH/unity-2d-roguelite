@@ -2,7 +2,7 @@
 
 ## 1. Baseline — in progress
 
-EditMode covers spawn-point choice and the two hit-point profiles. Sprite movement, dash, hit, and death: [character-sprite.md](FEATURE_SPECS/character-sprite.md). Character spawn: [character-spawn.md](FEATURE_SPECS/character-spawn.md). Profiles: [character-profile.md](FEATURE_SPECS/character-profile.md). Camera follow: [camera-follow.md](FEATURE_SPECS/camera-follow.md). Next play check: [PROJECT_CONTEXT.md](PROJECT_CONTEXT.md).
+EditMode covers spawn-point choice, the two hit-point profiles, and the spawner pool: [spawner-pool.md](FEATURE_SPECS/spawner-pool.md). Sprite movement, dash, hit, and death: [character-sprite.md](FEATURE_SPECS/character-sprite.md). Character spawn: [character-spawn.md](FEATURE_SPECS/character-spawn.md). Profiles: [character-profile.md](FEATURE_SPECS/character-profile.md). Camera follow: [camera-follow.md](FEATURE_SPECS/camera-follow.md). Next play check: [PROJECT_CONTEXT.md](PROJECT_CONTEXT.md).
 
 Exit: the next task is one sentence.
 
