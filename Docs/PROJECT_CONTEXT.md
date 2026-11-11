@@ -12,7 +12,7 @@ Baseline — in progress. No project test assembly. The player is `CharacterSpri
 
 ## Next step
 
-Assign `CharacterHit` and `CharacterDeath` on `Main Camera`. The sprite prefab already stores both. The sprite instance still overrides a removed `cameraShake` field. Then press P and confirm the camera kicks and settles back to rest, then press L and confirm the longer shake, the death frames once, the sprite hides, the body stops, and WASD, Shift, and P do nothing afterward. Hide Sprite On Death defaults on. The wall stop and the hit blink are still unplayed.
+Press P and confirm the camera kicks and settles back to rest, then press L and confirm the longer shake, the death frames once, the sprite hides, the body stops, and WASD, Shift, and P do nothing afterward. Hide Sprite On Death defaults on. The wall stop and the hit blink are still unplayed. `MainCamera` already listens to `CharacterHit` and `CharacterDeath`.
 
 ## Task board
 

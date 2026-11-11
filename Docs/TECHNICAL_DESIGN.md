@@ -11,7 +11,7 @@ The run shape, the per-player view, party scaling, the weapon ring, and who may 
 - Input: new Input System (`activeInputHandler` 1). Package `com.unity.inputsystem` 1.20.1. Asset: `Assets/Settings/InputSystem_Actions.inputactions`.
 - Component wiring: known references are `[SerializeField]` on the prefab. Decision: [0001-serialized-references.md](DECISIONS/0001-serialized-references.md). Rule: `.cursor/rules/unity-serialized-references.mdc`.
 - Simulation: one local authority writes gameplay state on a fixed step. One motor writes a rigidbody. Runtime spawns go through a spawner and are addressed by id. Presentation listens. A later host would run that same simulation. Decision: [0005-simulation-authority.md](DECISIONS/0005-simulation-authority.md).
-- Events: the simulation raises an `EventChannel<T>` after it commits a fact another prefab must hear. Same-prefab reads stay on the owner. Hit is `Assets/Settings/Events/CharacterHit.asset`. Death is `Assets/Settings/Events/CharacterDeath.asset`. Decision: [0004-event-channels.md](DECISIONS/0004-event-channels.md).
+- Events: the simulation raises one `EventChannel<T>` asset per fact another prefab must hear. Listeners share that asset. Same-prefab reads stay on the owner. Hit is `Assets/Settings/Events/CharacterHit.asset`. Death is `Assets/Settings/Events/CharacterDeath.asset`. Decision: [0004-event-channels.md](DECISIONS/0004-event-channels.md).
 - Run length: `GameConfig.waveCount` on `Assets/Settings/GameConfig.asset`. Default 20. The last wave is that value. Decision: [0002-shared-arena-coop.md](DECISIONS/0002-shared-arena-coop.md).
 
 ## Current owners
@@ -32,7 +32,7 @@ The run shape, the per-player view, party scaling, the weapon ring, and who may 
 ## Active children
 
 - [0001-serialized-references.md](DECISIONS/0001-serialized-references.md) — accepted. Inspector references for known components and assets.
-- [0004-event-channels.md](DECISIONS/0004-event-channels.md) — accepted. Cross-prefab listen after the simulation commits. Same-prefab reads stay on the owner.
+- [0004-event-channels.md](DECISIONS/0004-event-channels.md) — accepted. One asset per fact. Listeners share it. Same-prefab reads stay on the owner.
 - [character-sprite.md](FEATURE_SPECS/character-sprite.md) — in progress. Sprite movement, dash, hit test, death test, and the tilemap collider.
 - [hovering-weapons.md](FEATURE_SPECS/hovering-weapons.md) — accepted design, not built. Detail for [0006-hovering-weapons.md](DECISIONS/0006-hovering-weapons.md).
 - [0002-shared-arena-coop.md](DECISIONS/0002-shared-arena-coop.md) — accepted mode. Per-player camera, character centered. Wave count is config, default 20.

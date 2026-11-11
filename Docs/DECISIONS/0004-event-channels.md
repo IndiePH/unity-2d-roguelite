@@ -30,6 +30,8 @@ A shared channel for a fact that belongs to one character, weapon, or enemy. Eve
 
 A listener that applies damage, death, or movement. That write belongs to the simulation in [0005-simulation-authority.md](0005-simulation-authority.md).
 
+A parent channel per department, such as SFX, VFX, or character. One fact would be raised once for each department. Listeners share the fact asset. `EventChannel<T>` is the only parent, and each fact is one empty subclass.
+
 ## Why
 
 [0005-simulation-authority.md](0005-simulation-authority.md) says presentation listens to a result the simulation already committed. The channel asset is that listen when the listener is another prefab, and the Inspector shows the link. The list is not part of the asset file, so Play Mode cannot write listeners back to disk.
