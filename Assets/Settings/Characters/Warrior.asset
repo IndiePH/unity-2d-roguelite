@@ -1,0 +1,26 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e7b24c8a1f6d4e09a5c83b2d7e0f41a6, type: 3}
+  m_Name: Warrior
+  m_EditorClassIdentifier: Game::CharacterProfile
+  displayName: 70 HP
+  maxHp: 70
+  characterScale: 0.2
+  bodyPrefab: {fileID: 4313830581595331255, guid: dfe26666e8db4c7d8d69308b34f021d8, type: 3}
+  head: {fileID: 21300000, guid: 7a98c00520bab5044a256c3ef6c28d03, type: 3}
+  bodySprite: {fileID: 21300000, guid: 6eeae3a5ab932df4b82316e94a4ae2fb, type: 3}
+  leftArm: {fileID: 21300000, guid: 60ea405f20194694ca6c5c944ae3f3e6, type: 3}
+  rightArm: {fileID: 21300000, guid: 1262710e899b40e439e38b559165549b, type: 3}
+  leftHand: {fileID: 21300000, guid: c0ce264babc6ed84092e7b0aa9592140, type: 3}
+  rightHand: {fileID: 21300000, guid: d07bd87349365824dbcdf81db6ad72ae, type: 3}
+  leftLeg: {fileID: 21300000, guid: 699ed1298346a7043b3ff54fcabe5b9c, type: 3}
+  rightLeg: {fileID: 21300000, guid: 0fff548ddf237984d953dff0e0fdaae8, type: 3}

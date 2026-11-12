@@ -1,6 +1,6 @@
 # Project Context
 
-Date: 2026-11-11.
+Date: 2026-11-13.
 
 ## What the project is
 
@@ -8,7 +8,7 @@ Unity 6 (`6000.6.8f1`) URP 2D template named `unity-2d-roguelite`. The high conc
 
 ## Current gate
 
-Baseline — in progress. EditMode covers spawn-point choice, the two hit-point profiles, and the spawner pool. The player is `CharacterSprite`, the only character prefab. `SampleScene` spawns one of it on a random open point under `SpawnPoints`. A roster of characters with different talents and playstyles has two profiles, 100 HP and 70 HP. The prefab uses 100 HP. Selection is not built: [0007-character-roster.md](DECISIONS/0007-character-roster.md). The sprite moves by rigidbody velocity. The arena is the `Tilemap`. `CameraBounds` is 33 by 21, offset (0.5, 0.5), centered on cell (0, 0). `CameraFollow` keeps the character centered until the view would leave that box, and the feet stop on the barrier around it. The scene top of that barrier sits half a tile below the box. A `Hurt` trigger on the sprite covers the head and meets no layer yet. Detail: [character-sprite.md](FEATURE_SPECS/character-sprite.md), [character-profile.md](FEATURE_SPECS/character-profile.md), [character-spawn.md](FEATURE_SPECS/character-spawn.md), [spawner-pool.md](FEATURE_SPECS/spawner-pool.md), [camera-follow.md](FEATURE_SPECS/camera-follow.md).
+Baseline — in progress. EditMode covers spawn-point choice, the character profiles, and the spawner pool. The player is `Assets/Art/Characters/Character.prefab`. `Run.unity` spawns one of it on a random open point under `SpawnPoints`. `CharacterAnimation` plays Idle, Running, Hurt, Dying, and Sliding on that animator and applies the profile's part sprites. Five profiles share that prefab at scale 0.2. Blood Alchemist has 100 hit points. Warrior, Knight, Necromancer, and Templar have 70. The prefab uses Knight. Selection is not built: [0007-character-roster.md](DECISIONS/0007-character-roster.md). Early-access weapons, armor, accessories, and attributes are recorded and not built: [0008-gear-and-attributes.md](DECISIONS/0008-gear-and-attributes.md). The sprite moves by rigidbody velocity. The arena is the `Tilemap`. `CameraBounds` is 33 by 21, offset (0.5, 0.5), centered on cell (0, 0). `CameraFollow` keeps the character centered until the view would leave that box, and the feet stop on the barrier around it. The scene top of that barrier sits half a tile below the box. A `Hurt` trigger covers the head and meets no layer yet. The drawing is the `Visual` child. The profile scale sizes the drawing and both colliders. The profiles use 0.2. The parts draw at order 10. A standing dash follows facing. The dash stops after the Distance on the prefab, currently 2.5. Death tints the parts with the prefab's Death Color. Detail: [character-sprite.md](FEATURE_SPECS/character-sprite.md), [character-profile.md](FEATURE_SPECS/character-profile.md), [character-spawn.md](FEATURE_SPECS/character-spawn.md), [spawner-pool.md](FEATURE_SPECS/spawner-pool.md), [camera-follow.md](FEATURE_SPECS/camera-follow.md).
 
 ## Next step
 

@@ -56,7 +56,7 @@ Unity physics is not a shared clock across machines. The host simulates. Clients
 
 ## Leftover on the current sprite
 
-The player is the sprite in [character-sprite.md](../FEATURE_SPECS/character-sprite.md). `SampleScene` spawns that one instance. `CharacterMovement` and `CharacterDash` both set `linearVelocity`. `CharacterMovement` still contains a `transform.position` step for a missing rigidbody. The next movement change replaces both with the motor and removes that step. It waits until the play check in [PROJECT_CONTEXT.md](../PROJECT_CONTEXT.md) is done.
+The player is the character in [character-sprite.md](../FEATURE_SPECS/character-sprite.md). `Run.unity` spawns that one instance. `CharacterMovement` and `CharacterDash` both set `linearVelocity`. `CharacterMovement` still contains a `transform.position` step for a missing rigidbody. The next movement change replaces both with the motor and removes that step. It waits until the play check in [PROJECT_CONTEXT.md](../PROJECT_CONTEXT.md) is done.
 
 ## Still not chosen
 

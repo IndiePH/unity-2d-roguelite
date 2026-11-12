@@ -1,6 +1,6 @@
 Status: accepted
 Owner: Vincent Veran
-Last updated: 2026-11-11
+Last updated: 2026-11-13
 
 # Hovering weapons
 
@@ -8,7 +8,7 @@ The attack for the sprite player. Accepted in [0006-hovering-weapons.md](../DECI
 
 ## Choice
 
-Equipped weapons hover on a ring around `Assets/Prefabs/CharacterSprite.prefab` and attack on their own. The player does not press an attack. The body does not play an attack clip.
+Equipped weapons hover on a ring around `Assets/Art/Characters/Character.prefab` and attack on their own. The player does not press an attack. The body does not play an attack state.
 
 The ring is how the loadout is carried, which is the Brotato approach named here. Each weapon attacks from its own place on that ring. A weapon whose hitbox is the orbit itself is a later family, not the ring.
 
@@ -20,7 +20,7 @@ They are spaced evenly on a circle in the player's local space. One weapon start
 
 Weapon sprites stay upright while they hover. They do not flip with the player's `flipX`.
 
-Starting values, not measurements from Brotato: local radius 0.55, turn rate 30 degrees per second. The character prefab scale is 3, so a child weapon inherits that scale.
+Starting values, not measurements from Brotato: local radius 0.55, turn rate 30 degrees per second. The physics root stays at scale 1. A weapon parented there does not inherit the visual scale.
 
 The ring is assigned on the sprite prefab. It is not looked up at runtime.
 
@@ -40,7 +40,7 @@ No profile asset exists until the first weapon is built.
 
 One melee weapon is assigned on the sprite. That is enough to see the ring. Slot count, shop, merge, tiers, and classes stay open in the study and are not this spec. Brotato's reference loadout is six slots. This game has not picked its own count.
 
-The weapon swings from its current place on the ring toward the nearest target in range, then returns to that place. The swing is the weapon sprite. It does not use `CharacterSpriteAnimation` attack frames.
+The weapon swings from its current place on the ring toward the nearest target in range, then returns to that place. The swing is the weapon sprite. The body animator has no attack state.
 
 A target is chosen when a swing starts. If nothing is in range, the weapon keeps hovering and does not swing.
 
@@ -61,7 +61,8 @@ One stat block shared by melee and ranged weapons.
 ## Still open
 
 - The slot cap.
-- The ranged weapon's shot.
+- The ranged weapon's shot. Magic, as a shot that omits reload, is named in [0008-gear-and-attributes.md](../DECISIONS/0008-gear-and-attributes.md). The shot is not specified here.
+- Weapon tiers. Two copies of one tier become one of the next tier in that decision. This spec does not build them.
 - Radius, turn rate, and the first melee profile's numbers after one play check.
 - Manual aim. Off for this design.
 

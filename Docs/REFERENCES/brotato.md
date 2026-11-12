@@ -10,6 +10,9 @@ Decisions taken from this study:
 
 - [0002-shared-arena-coop.md](../DECISIONS/0002-shared-arena-coop.md) — accepted. This study is not that decision.
 - [0003-party-scaling.md](../DECISIONS/0003-party-scaling.md) — accepted starting table. This study is not that decision.
+- [0008-gear-and-attributes.md](../DECISIONS/0008-gear-and-attributes.md) — accepted early-access gear rules. This study is not that decision.
+
+Notion page 21, sections 8 and 9, added 2026-11-12: secondary-source claim. Brotato passives sit outside the weapon slots, have no general capacity, and do not combine two-for-one. Armor-like and accessory-like effects there are ordinary passives, not worn slots. The same page says Brotato has no skill roster. The 16-stat level-up table on that page was not adopted. The original rules taken from this note are in 0008.
 
 Steam: https://store.steampowered.com/app/1942280/Brotato/
 
@@ -91,7 +94,7 @@ Unlocks can ask for a weapon class, a stat or economy milestone, a boss approach
 
 Judge a character in the early, middle, and late run, and across more than one build. Early power with bad scaling, or a weak start that dominates later, are both failures if they are accidental.
 
-Still open: equal power versus intentional difficulty, whether every character can use every weapon and item, additive versus multiplicative versus rule-changing modifiers, whether a character mechanic can be upgraded mid-run, and how many characters a first release needs. `SampleScene` spawns one spritesheet character. The roster is accepted in [0007-character-roster.md](../DECISIONS/0007-character-roster.md). Two profiles exist, 100 HP and 70 HP. Selection is not built. Each character there has different talents and a different playstyle. See [character-sprite.md](../FEATURE_SPECS/character-sprite.md).
+Still open: equal power versus intentional difficulty, whether every character can use every weapon and item, additive versus multiplicative versus rule-changing modifiers, whether a character mechanic can be upgraded mid-run, and how many characters a first release needs. `Run.unity` spawns the bone-rig character. The roster is accepted in [0007-character-roster.md](../DECISIONS/0007-character-roster.md). Five profiles exist. Blood Alchemist has 100 hit points. Warrior, Knight, Necromancer, and Templar have 70. The prefab uses Knight. Selection is not built. Each character there has different talents and a different playstyle. See [character-sprite.md](../FEATURE_SPECS/character-sprite.md).
 
 ## Weapons and loadout
 
