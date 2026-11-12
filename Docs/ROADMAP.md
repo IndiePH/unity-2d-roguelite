@@ -26,4 +26,4 @@ Not started until gate 2 is done, and not started until gate 3 is done when the 
 
 ## Not a current gate
 
-Character selection is accepted and not started. The 100 HP and 70 HP profiles exist: [0007-character-roster.md](DECISIONS/0007-character-roster.md), [character-profile.md](FEATURE_SPECS/character-profile.md).
+Character selection is accepted and not started. Five profiles exist, and the prefab uses Knight: [0007-character-roster.md](DECISIONS/0007-character-roster.md), [character-profile.md](FEATURE_SPECS/character-profile.md).

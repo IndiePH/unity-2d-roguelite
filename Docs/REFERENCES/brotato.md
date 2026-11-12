@@ -91,7 +91,7 @@ Unlocks can ask for a weapon class, a stat or economy milestone, a boss approach
 
 Judge a character in the early, middle, and late run, and across more than one build. Early power with bad scaling, or a weak start that dominates later, are both failures if they are accidental.
 
-Still open: equal power versus intentional difficulty, whether every character can use every weapon and item, additive versus multiplicative versus rule-changing modifiers, whether a character mechanic can be upgraded mid-run, and how many characters a first release needs. `SampleScene` spawns one spritesheet character. The roster is accepted in [0007-character-roster.md](../DECISIONS/0007-character-roster.md). Two profiles exist, 100 HP and 70 HP. Selection is not built. Each character there has different talents and a different playstyle. See [character-sprite.md](../FEATURE_SPECS/character-sprite.md).
+Still open: equal power versus intentional difficulty, whether every character can use every weapon and item, additive versus multiplicative versus rule-changing modifiers, whether a character mechanic can be upgraded mid-run, and how many characters a first release needs. `Run.unity` spawns the bone-rig character. The roster is accepted in [0007-character-roster.md](../DECISIONS/0007-character-roster.md). Five profiles exist. Blood Alchemist has 100 hit points. Warrior, Knight, Necromancer, and Templar have 70. The prefab uses Knight. Selection is not built. Each character there has different talents and a different playstyle. See [character-sprite.md](../FEATURE_SPECS/character-sprite.md).
 
 ## Weapons and loadout
 

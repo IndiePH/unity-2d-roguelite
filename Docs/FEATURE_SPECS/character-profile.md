@@ -1,22 +1,20 @@
 Status: in-progress
 Owner: Vincent Veran
-Last updated: 2026-11-11
+Last updated: 2026-11-13
 
 # Character profile
 
-A character is a profile asset. The profile holds that character's max hit points and a reference to that character's spritesheet asset. Accepted in [0007-character-roster.md](../DECISIONS/0007-character-roster.md).
+A character is a profile asset. The profile holds that character's max hit points, the visual scale, the shared body prefab, and the eight part sprites. The animator on that prefab is the drawing. Accepted in [0007-character-roster.md](../DECISIONS/0007-character-roster.md).
 
 ## Profiles
 
-`Assets/Settings/Characters/Character100.asset` has 100 hit points and `Character100Sprites`. `Assets/Settings/Characters/Character70.asset` has 70 hit points and `Character70Sprites`.
+Five profiles live in `Assets/Settings/Characters`. `BloodAlchemist` has 100 hit points. `Warrior`, `Knight`, `Necromancer`, and `Templar` have 70. Each uses visual scale 0.2 and references `Assets/Art/Characters/Character.prefab`. Each has its own eight part sprites.
 
-`CharacterSprite` uses `Character100`. `Character.MaxHp` reads that profile. Nothing spends hit points. `Character70` is not spawned.
+`Character.prefab` uses `Knight`. `Character.MaxHp` and `Character.Scale` read that profile. Nothing spends hit points. The scale sizes the drawing and both colliders. The colliders stay on the body. Detail: [character-sprite.md](character-sprite.md).
 
-## Sheets
+## Sprites
 
-A sheet holds six clips: idle, move, dash, hit, attack, and death. Each clip is the frames in playback order and the seconds each frame stays up. `CharacterSpriteAnimation` plays the sheet on the assigned profile.
-
-`Character100Sprites` has the frames that used to live on the prefab. Idle is 0.16 seconds, move is 0.08, dash is 0.06, and hit, attack, and death are 0.08. Dash and attack have no frames. `Character70Sprites` uses those same times and has no frames. Those frames are assigned in the Inspector.
+Assign Head, Body, Left Arm, Right Arm, Left Hand, Right Hand, Left Leg, and Right Leg on the profile. `CharacterAnimation` copies the assigned sprites onto the matching parts when the character enables. An empty slot keeps the sprite already on the prefab. A new character is a new profile with those eight sprites assigned. It uses the same prefab.
 
 ## Not in this spec
 

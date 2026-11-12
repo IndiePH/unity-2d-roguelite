@@ -1,22 +1,22 @@
 Status: accepted
 Owner: Vincent Veran
-Last updated: 2026-11-11
+Last updated: 2026-11-13
 
 # Character roster
 
-A run has multiple characters to choose from. Each character has different talents and a different playstyle, and their own spritesheet. A player chooses one.
+A run has multiple characters to choose from. Each character has different talents and a different playstyle, and their own body. A player chooses one.
 
 The reference shape is The Spell Brigade (https://store.steampowered.com/app/2904000/The_Spell_Brigade/) and the Brotato study. The study is not this decision: [brotato.md](../REFERENCES/brotato.md).
 
-The current body is still one prefab. `SampleScene` spawns one `CharacterSprite`, and that prefab uses the 100 HP profile. The 70 HP profile is an asset only. Selection is not built. Detail of that body: [character-sprite.md](../FEATURE_SPECS/character-sprite.md). The profiles: [character-profile.md](../FEATURE_SPECS/character-profile.md). Spawn: [character-spawn.md](../FEATURE_SPECS/character-spawn.md).
+The current body is one prefab. `Run.unity` spawns `Assets/Art/Characters/Character.prefab`, and that prefab uses the Knight profile. The other profiles are assets only. Selection is not built. The body plays its animator: Idle, Running, Hurt, Dying, and Sliding. Every profile references that prefab and supplies its own part sprites. Detail of that body: [character-sprite.md](../FEATURE_SPECS/character-sprite.md). The profiles: [character-profile.md](../FEATURE_SPECS/character-profile.md). Spawn: [character-spawn.md](../FEATURE_SPECS/character-spawn.md).
 
 ## Choice
 
-The game has more than one character to choose from. Choosing one is part of starting a run. Each character is a profile asset. The profile holds that character's max hit points and a reference to that character's spritesheet asset. The sheet is one asset. Inside it, each clip is the frames in playback order plus the seconds each frame stays up: idle, move, dash, hit, attack, and death.
+The game has more than one character to choose from. Choosing one is part of starting a run. Each character is a profile asset. The profile holds that character's max hit points, the visual scale, the body prefab, and the eight part sprites. The spawned body plays animator states. The scale sizes the drawing and both colliders. The colliders stay on the body. Every profile uses scale 0.2 and references `Assets/Art/Characters/Character.prefab`.
 
-Two profiles exist. `Character100` has 100 hit points. `Character70` has 70. `CharacterSprite` uses `Character100`. `CharacterSpriteAnimation` plays the sheet on that profile. The frames that were on the prefab are on `Character100Sprites`. `Character70Sprites` has the same frame times and no frames yet.
+Five profiles exist. `BloodAlchemist` has 100 hit points. `Warrior`, `Knight`, `Necromancer`, and `Templar` have 70. The spawned prefab uses `Knight`. `CharacterAnimation` plays the animator on that prefab and applies the profile's part sprites.
 
-The sheet asset owns those clips. The profile references that asset. A clip does not own the asset, and a clip is not its own asset. Hit lock, the blink, invulnerability, and hiding the sprite on death stay on the character. The capsule stays on the body.
+Hit lock, the blink, invulnerability, and hiding the parts on death stay on the character. The capsule stays on the body.
 
 This is separate from co-op. Four players in one arena can still share one character. [0002-shared-arena-coop.md](0002-shared-arena-coop.md) already expects replay from a wider pool of characters, weapons, and items. It does not say those characters are selected, or that each one has different talents and a different playstyle.
 
@@ -32,7 +32,7 @@ Six frame lists and six durations kept on the component once a second sheet exis
 
 Spell Brigade and Brotato both send a player in as a character that changes the run. The change is talents and playstyle. Another sheet on the same talents would only change the drawing. The pool is stated here so the co-op decision is not asked to imply it.
 
-A second character is a second profile, and that profile references its own sheet. The frames and the frame time travel together, so they are one clip inside that sheet.
+A second character is a second profile. It references the shared body prefab and its own part sprites. A different skeleton would reference its own prefab.
 
 ## Still open
 
@@ -40,7 +40,7 @@ A second character is a second profile, and that profile references its own shee
 - How many characters a first release needs.
 - Whether two players in one match can pick the same character.
 - When selection happens, and the screen that does it.
-- Body fit. The current capsule is fitted to the current idle frame. A new sheet does not reuse that body until that fit is specified.
+- A later character whose drawing does not share this rig sets its own visual scale. The colliders scale with that value.
 
 ## Not in this decision
 

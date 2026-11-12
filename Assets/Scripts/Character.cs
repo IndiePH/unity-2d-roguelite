@@ -8,7 +8,9 @@ public class Character : MonoBehaviour
 
     float invulnerableUntil;
 
+    public CharacterProfile Profile => profile;
     public int MaxHp => profile.MaxHp;
+    public float Scale => profile.CharacterScale;
     public bool IsInvulnerable => Time.time < invulnerableUntil;
     public bool HoldMovement { get; private set; }
     public bool IsDead { get; private set; }

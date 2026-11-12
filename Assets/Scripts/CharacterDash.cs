@@ -6,12 +6,13 @@ public class CharacterDash : MonoBehaviour
 {
     [SerializeField] Character character;
     [SerializeField] CharacterMovement movement;
+    [SerializeField] CharacterAnimation characterAnimation;
     [SerializeField] Rigidbody2D body;
     [SerializeField] InputActionReference dash;
     [Tooltip("Units per second during the push.")]
     [SerializeField] float impulseSpeed = 16f;
-    [Tooltip("How long the push lasts, in seconds.")]
-    [SerializeField] float impulseDuration = 0.12f;
+    [Tooltip("How far the dash travels, in units. Twice the idle height at this size. A later change to character scale does not change this.")]
+    [SerializeField] float distance = 0.6842f;
     [Tooltip("Invulnerable time from the start of the dash, in seconds. Longer than the push keeps them safe after it stops.")]
     [SerializeField] float invulnerableDuration = 0.35f;
     [Tooltip("How many dashes are stored. An upgrade can raise this later.")]
@@ -20,12 +21,32 @@ public class CharacterDash : MonoBehaviour
     [SerializeField] float rechargeDuration = 1f;
 
     Vector2 direction;
-    float impulseUntil;
+    float traveled;
     float rechargeAt;
     int uses;
+    bool dashing;
+    bool releaseDash;
     bool wasDashing;
 
-    public bool IsImpulse => Time.time < impulseUntil;
+    public bool IsImpulse => dashing;
+
+    public static Vector2 Direction(Vector2 input, int facing)
+    {
+        if (input.sqrMagnitude < 0.0001f)
+            return facing < 0 ? Vector2.left : Vector2.right;
+
+        return input.normalized;
+    }
+
+    public static float Step(float traveled, float speed, float deltaTime, float distance)
+    {
+        float remaining = distance - traveled;
+        if (remaining <= 0f)
+            return 0f;
+
+        float step = speed * deltaTime;
+        return step < remaining ? step : remaining;
+    }
 
     void OnEnable()
     {
@@ -34,6 +55,9 @@ public class CharacterDash : MonoBehaviour
 
         if (movement == null)
             throw new MissingReferenceException($"{name} needs CharacterMovement assigned.");
+
+        if (characterAnimation == null)
+            throw new MissingReferenceException($"{name} needs CharacterAnimation assigned.");
 
         if (body == null)
             throw new MissingReferenceException($"{name} needs a Rigidbody2D assigned.");
@@ -54,7 +78,8 @@ public class CharacterDash : MonoBehaviour
         if (dash != null && dash.action != null)
             dash.action.Disable();
 
-        impulseUntil = 0f;
+        dashing = false;
+        releaseDash = false;
         rechargeAt = 0f;
         if (body != null)
             body.linearVelocity = Vector2.zero;
@@ -64,17 +89,24 @@ public class CharacterDash : MonoBehaviour
     {
         if (character.IsDead)
         {
-            impulseUntil = 0f;
+            dashing = false;
+            releaseDash = false;
             rechargeAt = 0f;
             wasDashing = false;
             return;
         }
 
-        bool dashing = IsImpulse;
-        if (wasDashing && !dashing && uses < maxUses)
+        if (character.HoldMovement)
+        {
+            dashing = false;
+            releaseDash = false;
+        }
+
+        bool pushing = IsImpulse;
+        if (wasDashing && !pushing && uses < maxUses)
             rechargeAt = Time.time + rechargeDuration;
 
-        if (!dashing && rechargeAt > 0f && Time.time >= rechargeAt)
+        if (!pushing && rechargeAt > 0f && Time.time >= rechargeAt)
         {
             uses++;
             if (uses > maxUses)
@@ -83,7 +115,7 @@ public class CharacterDash : MonoBehaviour
             rechargeAt = uses < maxUses ? Time.time + rechargeDuration : 0f;
         }
 
-        if (!character.HoldMovement && !dashing && uses > 0 && dash.action.WasPressedThisFrame())
+        if (!character.HoldMovement && !pushing && uses > 0 && dash.action.WasPressedThisFrame())
             TryDash();
 
         wasDashing = IsImpulse;
@@ -91,22 +123,37 @@ public class CharacterDash : MonoBehaviour
 
     void TryDash()
     {
-        Vector2 input = movement.CurrentInput;
-        if (input.sqrMagnitude < 0.0001f)
-            return;
-
-        direction = input.normalized;
+        direction = Direction(movement.CurrentInput, characterAnimation.Facing);
         uses--;
-        impulseUntil = Time.time + impulseDuration;
+        traveled = 0f;
+        dashing = true;
+        releaseDash = false;
         rechargeAt = 0f;
         character.StartInvulnerability(invulnerableDuration);
     }
 
     void FixedUpdate()
     {
-        if (character.IsDead || !IsImpulse || character.HoldMovement)
+        if (releaseDash)
+        {
+            dashing = false;
+            releaseDash = false;
+            return;
+        }
+
+        if (!dashing || character.IsDead || character.HoldMovement)
             return;
 
-        body.linearVelocity = direction * impulseSpeed;
+        float step = Step(traveled, impulseSpeed, Time.fixedDeltaTime, distance);
+        if (step <= 0f)
+        {
+            dashing = false;
+            return;
+        }
+
+        body.linearVelocity = direction * (step / Time.fixedDeltaTime);
+        traveled += step;
+        if (traveled >= distance)
+            releaseDash = true;
     }
 }

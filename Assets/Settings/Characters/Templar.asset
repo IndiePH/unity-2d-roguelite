@@ -1,0 +1,26 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e7b24c8a1f6d4e09a5c83b2d7e0f41a6, type: 3}
+  m_Name: Templar
+  m_EditorClassIdentifier: Game::CharacterProfile
+  displayName: 70 HP
+  maxHp: 70
+  characterScale: 0.2
+  bodyPrefab: {fileID: 4313830581595331255, guid: dfe26666e8db4c7d8d69308b34f021d8, type: 3}
+  head: {fileID: 21300000, guid: 23deeeddfbf0e5d4b93438cbfbf8727a, type: 3}
+  bodySprite: {fileID: 21300000, guid: fea9c744a2b9026449b356ea41a5e26c, type: 3}
+  leftArm: {fileID: 21300000, guid: 8970ff24b304c934ca10d6745e4731d4, type: 3}
+  rightArm: {fileID: 21300000, guid: fd0a5bc08cbd87d4380637d5fd12aa8b, type: 3}
+  leftHand: {fileID: 21300000, guid: ed3c37e13216abe48ab795d52bea8829, type: 3}
+  rightHand: {fileID: 21300000, guid: 6124d2b67152d4f47813164e99c18d90, type: 3}
+  leftLeg: {fileID: 21300000, guid: 59bf9351ae1815f41b6f62a4cc118fbf, type: 3}
+  rightLeg: {fileID: 21300000, guid: 80277c90b6fe0cd44b17bc94e6cdead7, type: 3}
