@@ -1,6 +1,6 @@
 # Technical Design
 
-The run shape, the per-player view, party scaling, the weapon ring, the character roster, and who may write gameplay state are settled. The high concept and the core loop are not. The player is `Assets/Art/Characters/Character.prefab`, spawned in `Run.unity`: [character-spawn.md](FEATURE_SPECS/character-spawn.md). Two profiles exist. Selection is not built: [0007-character-roster.md](DECISIONS/0007-character-roster.md).
+The run shape, the per-player view, party scaling, the weapon ring, the early-access gear rules, the character roster, and who may write gameplay state are settled. The high concept and the core loop are not. The player is `Assets/Art/Characters/Character.prefab`, spawned in `Run.unity`: [character-spawn.md](FEATURE_SPECS/character-spawn.md). Five profiles exist. Selection is not built: [0007-character-roster.md](DECISIONS/0007-character-roster.md). Gear rules are recorded and not built: [0008-gear-and-attributes.md](DECISIONS/0008-gear-and-attributes.md).
 
 ## Settled facts
 
@@ -50,3 +50,4 @@ The run shape, the per-player view, party scaling, the weapon ring, the characte
 - [0005-simulation-authority.md](DECISIONS/0005-simulation-authority.md) — accepted. Single writer, spawner, host later.
 - [0006-hovering-weapons.md](DECISIONS/0006-hovering-weapons.md) — accepted. Ring, and a profile per weapon type.
 - [0007-character-roster.md](DECISIONS/0007-character-roster.md) — accepted. A chosen character has different talents and a different playstyle. Max hit points, visual scale, the shared body, and the part sprites are the first fields.
+- [0008-gear-and-attributes.md](DECISIONS/0008-gear-and-attributes.md) — accepted. Eight weapons, flat armor and accessory stacks, weapon tiers. No skill button. Not built.

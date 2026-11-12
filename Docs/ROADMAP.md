@@ -2,7 +2,7 @@
 
 ## 1. Baseline — in progress
 
-EditMode covers spawn-point choice, the two hit-point profiles, and the spawner pool: [spawner-pool.md](FEATURE_SPECS/spawner-pool.md). Sprite movement, dash, hit, and death: [character-sprite.md](FEATURE_SPECS/character-sprite.md). Character spawn: [character-spawn.md](FEATURE_SPECS/character-spawn.md). Profiles: [character-profile.md](FEATURE_SPECS/character-profile.md). Camera follow: [camera-follow.md](FEATURE_SPECS/camera-follow.md). Next play check: [PROJECT_CONTEXT.md](PROJECT_CONTEXT.md).
+EditMode covers spawn-point choice, the character profiles, and the spawner pool: [spawner-pool.md](FEATURE_SPECS/spawner-pool.md). Sprite movement, dash, hit, and death: [character-sprite.md](FEATURE_SPECS/character-sprite.md). Character spawn: [character-spawn.md](FEATURE_SPECS/character-spawn.md). Profiles: [character-profile.md](FEATURE_SPECS/character-profile.md). Camera follow: [camera-follow.md](FEATURE_SPECS/camera-follow.md). Next play check: [PROJECT_CONTEXT.md](PROJECT_CONTEXT.md).
 
 Exit: the next task is one sentence.
 
@@ -27,3 +27,5 @@ Not started until gate 2 is done, and not started until gate 3 is done when the 
 ## Not a current gate
 
 Character selection is accepted and not started. Five profiles exist, and the prefab uses Knight: [0007-character-roster.md](DECISIONS/0007-character-roster.md), [character-profile.md](FEATURE_SPECS/character-profile.md).
+
+Early-access weapons, passive stacks, and attributes are recorded and not started: [0008-gear-and-attributes.md](DECISIONS/0008-gear-and-attributes.md).

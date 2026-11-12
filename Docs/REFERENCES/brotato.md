@@ -10,6 +10,9 @@ Decisions taken from this study:
 
 - [0002-shared-arena-coop.md](../DECISIONS/0002-shared-arena-coop.md) — accepted. This study is not that decision.
 - [0003-party-scaling.md](../DECISIONS/0003-party-scaling.md) — accepted starting table. This study is not that decision.
+- [0008-gear-and-attributes.md](../DECISIONS/0008-gear-and-attributes.md) — accepted early-access gear rules. This study is not that decision.
+
+Notion page 21, sections 8 and 9, added 2026-11-12: secondary-source claim. Brotato passives sit outside the weapon slots, have no general capacity, and do not combine two-for-one. Armor-like and accessory-like effects there are ordinary passives, not worn slots. The same page says Brotato has no skill roster. The 16-stat level-up table on that page was not adopted. The original rules taken from this note are in 0008.
 
 Steam: https://store.steampowered.com/app/1942280/Brotato/
 

@@ -36,7 +36,7 @@ A second character is a second profile. It references the shared body prefab and
 
 ## Still open
 
-- What else a talent or playstyle includes beyond max hit points: stats, starting weapons, items, modifiers, and special rules.
+- What else a talent or playstyle includes beyond max hit points: modifiers and special rules. Attributes, weapon tiers, and passive stacks are [0008-gear-and-attributes.md](0008-gear-and-attributes.md). Which of these five profiles uses which archetype, and which weapon it starts with, stays open there.
 - How many characters a first release needs.
 - Whether two players in one match can pick the same character.
 - When selection happens, and the screen that does it.

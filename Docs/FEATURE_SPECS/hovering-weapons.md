@@ -1,6 +1,6 @@
 Status: accepted
 Owner: Vincent Veran
-Last updated: 2026-11-12
+Last updated: 2026-11-13
 
 # Hovering weapons
 
@@ -61,7 +61,8 @@ One stat block shared by melee and ranged weapons.
 ## Still open
 
 - The slot cap.
-- The ranged weapon's shot.
+- The ranged weapon's shot. Magic, as a shot that omits reload, is named in [0008-gear-and-attributes.md](../DECISIONS/0008-gear-and-attributes.md). The shot is not specified here.
+- Weapon tiers. Two copies of one tier become one of the next tier in that decision. This spec does not build them.
 - Radius, turn rate, and the first melee profile's numbers after one play check.
 - Manual aim. Off for this design.
 
